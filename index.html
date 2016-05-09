@@ -5,36 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ITBA</title>
      <!-- Angular Material requires Angular.js Libraries -->
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+    <script src="js/libs/angular.min.js"></script>
+    <script src="js/libs/angular-animate.min.js"></script>
+    <script src="js/libs/angular-aria.min.js"></script>
+    <script src="js/libs/angular-messages.min.js"></script>
     <!-- Angular Material Library -->
-    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
+    <script src="js/libs/angular-material.min.js"></script>
     <script src="js/modules.js"></script>
+    <script src="js/controllers.js"></script>
     
     <!-- Angular Material style sheet -->
-    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
+    <link rel="stylesheet" href="css/libs/angular-material.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <!--https://design.google.com/icons-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </head>
-<body ng-app="crmApp" layout="column" ng-cloak>
+<body ng-app="crmApp" layout="column" ng-cloak ng-controller="appCtrl">
    <md-toolbar layout="row">
        <div class="md-toolbar-tools">
-        <md-button class="md-icon-button" aria-label="Settings">
+        <md-button ng-click="toogleNav('left')" class="md-icon-button" aria-label="Settings">
           <md-icon aria-label="Menu" class="material-icons">menu</md-icon>
         </md-button>
         <h2>
           <span>Toolbar with Icon Buttons</span>
         </h2>
+        <span flex></span>
+        <md-button ng-click="toogleNav('right')" class="md-icon-button" aria-label="More">
+          <i class="material-icons">more_vert</i>
+        </md-button>
       </div>
        
    </md-toolbar>
    
    <div flex layout="row" onclick="buildToggler('right')">
-        <md-sidenav flex="5" md-is-locked-open="true" class="md-whiteframe-z2"></md-sidenav>
+        <md-sidenav ng-hide="!isOpen('left')" md-component-id="left" md-is-locked-open="true" class="md-whiteframe-z2"></md-sidenav>
         <md-content flex id="content"></md-content>
+        <md-sidenav ng-hide="!isOpen('right')" md-component-id="right" md-is-locked-open="true" class="md-sidenav-right md-whiteframe-z2"></md-sidenav>
    </div>
 </body>
 </html>
