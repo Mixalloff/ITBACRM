@@ -38,10 +38,10 @@
        
    </md-toolbar>
    
-   <div flex layout="row" onclick="buildToggler('right')">
-        <md-sidenav ng-hide="!isOpen('left')" md-component-id="left" md-is-locked-open="true" class="md-whiteframe-z2"></md-sidenav>
+   <div id="sideNavContainer" flex layout="row">
+        <md-sidenav md-component-id="left" class="md-sidenav-left md-whiteframe-z2"></md-sidenav>
         <md-content flex id="content"></md-content>
-        <md-sidenav ng-hide="!isOpen('right')" md-component-id="right" md-is-locked-open="true" class="md-sidenav-right md-whiteframe-z2"></md-sidenav>
+        <md-sidenav md-component-id="right" class="md-sidenav-right md-whiteframe-z2"></md-sidenav>
    </div>
 </body>
 </html>
