@@ -45,9 +45,14 @@ gulp.task('crm_js', function(){
 });
 
 gulp.task('crm_css', function(){
-  return gulp.src('clientApp/css/*.css')
+  return gulp.src('clientApp/crmApp/content/**/*.css')
   .pipe(concat('crm.css'))
   .pipe(gulp.dest(buildPath + '/css'));
+});
+
+gulp.task('crm_fonts', function(){
+  return gulp.src('clientApp/crmApp/content/fonts/*')
+  .pipe(gulp.dest(buildPath + '/fonts'));
 });
 
 gulp.task('server', function (cb) {
@@ -66,7 +71,7 @@ gulp.task('watch', function(){
 });
 
 // Выполняет сборку
-gulp.task('build', ['vendors_js', 'vendors_css', 'crm_js', 'crm_css']);
+gulp.task('build', ['vendors_js', 'vendors_css', 'crm_js', 'crm_css','crm_fonts']);
 
 // Собирает проект, запускае сервер и отслеживает изменения
 gulp.task('default', ['build', 'server', 'watch']);

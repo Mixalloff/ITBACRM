@@ -40,6 +40,7 @@ md-grid-list md-grid-tile{
     text-align: center;
     padding: 10px;
     margin: 10px;
+    flex: 0 0 30%!important;
 }
 
 .day_value {

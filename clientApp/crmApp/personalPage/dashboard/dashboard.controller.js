@@ -71,4 +71,25 @@ var testCalendar = [
                      }
                  ]
              },
+             {
+                 value: 4,
+                 name:  "Суббота",
+                 month: "Июнь",
+                 today: false,
+                 tasks:
+                 [
+                     {
+                         name: "Позвонить клиенту",
+                         time: "15:00",
+                         type: "call",
+                         id: 311
+                     },
+                     {
+                         name: "Встреча для обсуждения деталей ТЗ",
+                         time: "18:00",
+                         type: "meeting",
+                         id: 312
+                     }
+                 ]
+             },
          ];

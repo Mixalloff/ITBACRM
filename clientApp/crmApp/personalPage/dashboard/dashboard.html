@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="crmApp/personalPage/dashboard/dashboard.css">
 <section class="dashboard_container full_width" layout="row">
-
+    
     <md-grid-list class="dashboard_grid"
         md-cols-xs="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="6"
         md-row-height-gt-md="1:1" md-row-height="1:1"
@@ -12,7 +12,7 @@
                 <md-content class="md-whiteframe-3dp card" layout-fill layout="column" layout-align="start">
                     <h2 class="card_header">Календарь</h2>
                     <div class="calendar_carousel_container" layout="row">
-                        <div class="calendar_day md-whiteframe-4dp"  ng-class="{today: day.today}" flex ng-repeat="day in dashboard.calendar" layout="column">
+                        <div class="calendar_day md-whiteframe-4dp"  ng-class="{today: day.today}" ng-repeat="day in dashboard.calendar" layout="column">
                             <div class="day_value">{{day.value}}</div>
                             <div class="day_month">{{day.month}}</div>
                             <div class="day_name">{{day.name}}</div>
