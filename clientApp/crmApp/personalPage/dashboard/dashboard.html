@@ -1,1 +1,59 @@
-<div>dashboard</div>
+<link rel="stylesheet" href="crmApp/personalPage/dashboard/dashboard.css">
+<section class="dashboard_container full_width" layout="row">
+
+    <md-grid-list class="dashboard_grid"
+        md-cols-xs="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="6"
+        md-row-height-gt-md="1:1" md-row-height="1:1"
+        md-gutter="12px" md-gutter-gt-sm="8px" >
+        <!-- Календарь -->
+        <md-grid-tile class="calendar_block" layout="column" layout-align="space-around stretch" 
+            md-rowspan="2" md-colspan="4" md-colspan-sm="1" md-colspan-xs="2">
+            <div class="card_content">
+                <md-content class="md-whiteframe-3dp card" layout-fill layout="column" layout-align="start">
+                    <h2 class="card_header">Календарь</h2>
+                    <div class="calendar_carousel_container" layout="row">
+                        <div class="calendar_day md-whiteframe-4dp"  ng-class="{today: day.today}" flex ng-repeat="day in dashboard.calendar" layout="column">
+                            <div class="day_value">{{day.value}}</div>
+                            <div class="day_month">{{day.month}}</div>
+                            <div class="day_name">{{day.name}}</div>
+                            <div class="day_tasks_block">
+                                <div class="day_tasks" flex ng-repeat="task in day.tasks" layout>
+                                <div class="day_task_options" flex='20'>{{task.time}}</div>
+                                <div class="day_task_options" flex='70'>{{task.name}}</div>
+                                <i class="material-icons day_task_options" flex='10'>remove_red_eye</i>
+                            </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <md-button class="md-fab add_task_btn" aria-label="Add task">
+                        <i class="material-icons">add</i>
+                    </md-button>
+                </md-content>
+                
+            </div>
+            
+        </md-grid-tile>
+        
+        <!-- Последние сделки -->
+        <md-grid-tile class="last_deals_block"
+            md-rowspan="4" md-colspan="2" md-colspan-sm="2" md-colspan-xs="1">
+            <div class="card_content">
+                <md-content class="md-whiteframe-3dp card" layout-fill layout="column" layout-align="start">
+                    <h2 class="card_header">Последние сделки</h2>
+                </md-content>
+            </div>
+        </md-grid-tile>
+        
+        <!-- События -->
+        <md-grid-tile class="events_block"
+            md-rowspan="2" md-colspan="4" md-colspan-sm="1" md-colspan-xs="2">
+        <div class="card_content">     
+            <md-content class="md-whiteframe-3dp card" layout-fill layout="column" layout-align="start">
+                <h2 class="card_header">События</h2>
+            </md-content>
+        </div>
+        </md-grid-tile>
+
+  </md-grid-list>
+</section>
