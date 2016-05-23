@@ -1,10 +1,10 @@
-var crmApp=angular.module('crmApp');
-crmApp.controller("appCtrl",
+angular.module('crmApp').controller("appCtrl",
      function ($scope, $mdSidenav) {
-         $scope.toogleNav= function(navID) {
+         var vm = this;
+         vm.toogleNav= function(navID) {
              $mdSidenav(navID).toggle();
          }
-         $scope.isOpen = function(navID){
+         vm.isOpen = function(navID){
             return $mdSidenav(navID).isOpen();
          };
      }
