@@ -21,11 +21,15 @@
                             <div class="day_month">{{day.month}}</div>
                             <div class="day_name">{{day.name}}</div>
                             <div class="day_tasks_block">
-                                <div class="day_tasks" flex ng-repeat="task in day.tasks" layout>
-                                    <div class="day_task_options" flex='20'>{{task.time}}</div>
-                                    <div class="day_task_options" flex='70'>{{task.name}}</div>
-                                    <i class="material-icons day_task_options" flex='10'>remove_red_eye</i>
+                                <div class="day_tasks" flex ng-repeat="task in day.tasks" layout="column">
+                                    <div class="day_task" layout>
+                                        <div class="day_task_options auto_centered" flex='20'>{{task.time}}</div>
+                                        <div class="day_task_options auto_centered" flex='70'>{{task.name}}</div>
+                                        <i class="material-icons auto_centered">send</i>
+                                    </div>
+                                    <md-divider></md-divider>
                                 </div>
+                                
                             </div>
                             
                         </div>
@@ -50,7 +54,7 @@
                              ng-repeat="deal in dashboard.deals"
                              layout="column">
                             <div class="deal_head" layout flex>
-                                 <div class="deal_name">{{deal.name}}</div>
+                                 <div class="deal_name auto_centered">{{deal.name}}</div>
                                  <div flex></div>
                                  <md-button class="md-icon-button" aria-label="More"> 
                                     <i class="material-icons">more_vert</i>
@@ -58,14 +62,25 @@
                             </div>
                             
                             <div class="deal_company_name">{{deal.company.name}}</div>
-                            <div class="deal_tasks">
-                                 <div ng-repeat="task in deal.tasks">
-                                    <div class="deal_task_name">{{task.name}}</div>
+                            <div class="deal_tasks_container">
+                                <div class="deal_tasks" ng-repeat="task in deal.tasks">
+                                    <div class="deal_task" layout>
+                                        <div class="deal_info">
+                                            <div class="deal_task_date">{{task.date}} {{task.time}}</div>
+                                            <div class="deal_task_name">
+                                                {{task.name}}
+                                            </div>
+                                        </div>
+                                        <div flex></div>
+                                        <i class="material-icons auto_centered">send</i>
+                                    </div>
+                                    <md-divider></md-divider>
                                 </div>
+                                 
                             </div>
                             <div class="footer_deal" layout flex>
                                 <div flex></div>
-                                <div class="deal_amount">{{deal.amount}}</div>
+                                <div class="deal_amount">{{deal.amount}} руб.</div>
                             </div>
                             
                         </div>

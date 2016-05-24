@@ -66,6 +66,19 @@ md-grid-list md-grid-tile{
     color: #3B3B3B;
 }
 
+.day_tasks {
+    display: flex;
+}
+
+.day_task {
+    width: 100%;
+    padding: 5px 0;
+}
+
+md-divider {
+    width: 100%;
+}
+
 .today {
     background-color: rgb(200, 225, 255);
 }
@@ -95,7 +108,6 @@ md-grid-list md-grid-tile{
 }
 
 .deal_name {
-    margin: auto;
     font-weight: 600;
     text-transform: uppercase;
 }
@@ -105,10 +117,23 @@ md-grid-list md-grid-tile{
     color: #737373;
 }
 
-.deal_tasks {
+.deal_tasks_container {
     padding: 10px 0;
     font-size: .8em;
     color: #494949;
+}
+
+.deal_task {
+    padding: 5px;
+}
+
+.auto_centered {
+    margin: auto;
+}
+
+.deal_task_date {
+    font-style: italic;
+    font-size: .9em;
 }
 
 .deal_amount {
