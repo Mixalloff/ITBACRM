@@ -3,6 +3,7 @@ angular.module('crmApp').controller("dashboardCtrl", ["$scope", "$stateParams",
          var vm = this;
          vm.calendar = testCalendar;
          vm.deals = testDeals;
+         vm.events = testEvents;
                   
          // Ценровка календаря при загрузке
          $scope.$on('ngRepeatFinished', calendarScroll);
@@ -222,4 +223,23 @@ var testDeals = [
         score: 7, // "теплота" клиента по 10 бальной шкале
         amount: 80000
     }
+];
+
+var testEvents = [
+    {
+        name: "Добавлен контакт Сидоров И.И.",
+        owner: {
+            name: "Петров А.А."
+        },
+        date: "01.06.2016",
+        type: "ADD"  
+    },
+    {
+        name: "Добавлен контакт Сидоров И.И.",
+        owner: {
+            name: "Петров А.А."
+        },
+        date: "01.06.2016",
+        type: "ADD"  
+    },
 ];

@@ -29,12 +29,10 @@
                                     </div>
                                     <md-divider></md-divider>
                                 </div>
-                                
                             </div>
-                            
                         </div>
                     </div>
-                    <md-button class="md-fab add_task_btn" aria-label="Add task">
+                    <md-button class="md-fab add_btn add_task_btn" aria-label="Add task">
                         <i class="material-icons">add</i>
                     </md-button>
                 </md-content>
@@ -95,6 +93,22 @@
         <div class="card_content">     
             <md-content class="md-whiteframe-3dp card" layout-fill layout="column" layout-align="start">
                 <h2 class="card_header">События</h2>
+                <div class="events_container">
+                    <div class="event_card md-whiteframe-4dp"
+                             ng-repeat="event in dashboard.events"
+                             layout>
+                        <i class="material-icons auto_centered" flex="10">send</i>
+                        <div class="event_body auto_centered" flex>
+                            <div class="event_name">{{event.name}}</div>
+                            <div class="event_owner">{{event.owner.name}}</div>
+                        </div>
+                        <div flex></div>
+                        <div class="event_date auto_centered">{{event.date}}</div>
+                    </div>
+                </div>
+                <md-button class="md-fab add_btn add_event_btn" aria-label="Add task">
+                    <i class="material-icons">add</i>
+                </md-button>
             </md-content>
         </div>
         </md-grid-tile>

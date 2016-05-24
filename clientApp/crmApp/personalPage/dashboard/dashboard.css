@@ -83,7 +83,7 @@ md-divider {
     background-color: rgb(200, 225, 255);
 }
 
-.add_task_btn {
+.add_btn {
     right: 0;
     bottom: 0;
     position: absolute;
@@ -91,7 +91,7 @@ md-divider {
     line-height: 100%!important;
 }
 
-.add_task_btn .material-icons {
+.add_btn .material-icons {
     font-size: 2em;
 }
 
@@ -139,4 +139,14 @@ md-divider {
 .deal_amount {
     font-weight: 600;
     font-size: 1.2em;
+}
+
+.event_card {
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.event_card i {
+    text-align: center;
+    padding: 10px;
 }
