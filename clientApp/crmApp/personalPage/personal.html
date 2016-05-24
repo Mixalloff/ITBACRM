@@ -1,5 +1,5 @@
   <link rel="stylesheet" href="crmApp/personalPage/personal.css">
-  <md-toolbar layout="row">
+  <md-toolbar layout="row" class="header">
        <div class="md-toolbar-tools">
         <md-button ng-show="!main.isOpen('left')" ng-click="main.toogleNav('left')" class="md-icon-button" aria-label="Settings">
           <md-icon aria-label="Menu" class="material-icons">menu</md-icon>
@@ -7,6 +7,24 @@
         <h2>
           <span>ITBA CRM</span>
         </h2>
+        
+        <!--<md-input-container flex class="header_search_field" layout>
+          <label>Name</label>
+          <input type="text" class="search_input" flex-align="center"/>
+        </md-input-container>-->
+        <form flex class="searchForm" action="">
+          <!--<md-input-container flex class="header_search_field" layout>
+            <label>Name</label>
+            <input type="text" class="search_input" flex-align="center"/>
+          </md-input-container>-->
+          <input type="text" flex="90" placeholder="Найти клиента, документ, задачу...">
+     
+            <md-button flex="10">
+                <i class="material-icons">search</i>
+            </md-button>
+            
+        </form>
+        
         <span flex></span>
         <md-button onclick="alert('Notifications!')" class="md-icon-button" aria-label="More"> 
           <i class="material-icons">notifications_none</i>
@@ -18,9 +36,10 @@
        
    </md-toolbar>
    
-   <div flex layout="row" class="full_width">
+   <div flex layout="row" class="full_width under_header">
      <ui-view class="full_width"></ui-view>
      
+        <!--Левое меню-->
         <md-sidenav layout="column" md-component-id="left" class="md-sidenav-left md-whiteframe-z2">
           <md-toolbar layout="row">
             <div class="menu-header-label">Меню</div>
@@ -45,6 +64,14 @@
             <md-button class="menu-row unactive-row" layout="row" > 
               <span class="menu-label">Аналитика</span>
               <i class="material-icons menu-icon">pie_chart</i><div flex></div>
+            </md-button>
+            <md-button class="menu-row unactive-row" layout="row" > 
+              <span class="menu-label">Документы</span>
+              <i class="material-icons menu-icon">description</i><div flex></div>
+            </md-button>
+            <md-button class="menu-row unactive-row" layout="row" > 
+              <span class="menu-label">Настройки</span>
+              <i class="material-icons menu-icon">settings</i><div flex></div>
             </md-button>
             
           </md-content>          

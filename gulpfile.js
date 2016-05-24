@@ -22,6 +22,11 @@ var vendorsCssFiles = mainBowerFiles({
     }
 });
 
+// Пути к пользовательским файлам
+var crmJsPath = 'clientApp/crmApp/**/*.js',
+    crmCssPath = 'clientApp/crmApp/content/**/*.css',
+    crmFontsPath = 'clientApp/crmApp/content/fonts/*';
+
 gulp.task('vendors_js', function(){
   return gulp.src(vendorsJsFiles)
   .pipe(concat('vendors.js'))
@@ -35,7 +40,7 @@ gulp.task('vendors_css', function(){
 });
 
 gulp.task('crm_js', function(){
-  return gulp.src('clientApp/crmApp/**/*.js')
+  return gulp.src(crmJsPath)
   .pipe(order([
     "**/crmApp.module.js",
     "**/*.js"
@@ -45,13 +50,13 @@ gulp.task('crm_js', function(){
 });
 
 gulp.task('crm_css', function(){
-  return gulp.src('clientApp/crmApp/content/**/*.css')
+  return gulp.src(crmCssPath)
   .pipe(concat('crm.css'))
   .pipe(gulp.dest(buildPath + '/css'));
 });
 
 gulp.task('crm_fonts', function(){
-  return gulp.src('clientApp/crmApp/content/fonts/*')
+  return gulp.src(crmFontsPath)
   .pipe(gulp.dest(buildPath + '/fonts'));
 });
 
@@ -66,8 +71,8 @@ gulp.task('server', function (cb) {
 gulp.task('watch', function(){
   gulp.watch(vendorsJsFiles, ['vendors_js']);
   gulp.watch(vendorsCssFiles, ['vendors_css']);
-  gulp.watch('clientApp/crmApp/**/*.js', ['crm_js']);
-  gulp.watch('clientApp/css/*.css', ['crm_css']);
+  gulp.watch(crmJsPath, ['crm_js']);
+  gulp.watch(crmCssPath, ['crm_css']);
 });
 
 // Выполняет сборку

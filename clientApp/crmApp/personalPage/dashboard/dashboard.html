@@ -11,7 +11,7 @@
             <div class="card_content">
                 <md-content class="md-whiteframe-3dp card" layout-fill layout="column" layout-align="start">
                     <h2 class="card_header">Календарь</h2>
-                    <div class="calendar_carousel_container" layout="row">
+                    <div class="calendar_carousel_container" layout="row" ng-render="{{dashboard.calendarScroll()}}">
                         <div class="calendar_day md-whiteframe-4dp"  ng-class="{today: day.today}" ng-repeat="day in dashboard.calendar" layout="column">
                             <div class="day_value">{{day.value}}</div>
                             <div class="day_month">{{day.month}}</div>

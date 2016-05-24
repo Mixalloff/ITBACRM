@@ -4,7 +4,7 @@ md-grid-list {
 }
 
 md-grid-list md-grid-tile{
-    transition: all 400ms ease-out 50ms;
+    /*transition: all 400ms ease-out 200ms;*/
 }
 
 .dashboard_grid {
