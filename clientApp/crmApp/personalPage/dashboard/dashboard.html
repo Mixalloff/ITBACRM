@@ -9,10 +9,10 @@
         <md-grid-tile class="calendar_block" layout="column" layout-align="space-around stretch" 
             md-rowspan="2" md-colspan="4" md-colspan-sm="1" md-colspan-xs="2">
             <div class="card_content">
-                <md-content class="md-whiteframe-3dp card" layout-fill layout="column" layout-align="start">
+                <md-content class="card" layout-fill layout="column" layout-align="start">
                     <h2 class="card_header">Календарь</h2>
                     <div class="calendar_carousel_container" layout="row" ng-init="dashboard.calendarScroll()">
-                        <div class="calendar_day md-whiteframe-4dp"
+                        <div class="calendar_day md-whiteframe-2dp"
                              ng-class="{today: day.today}"
                              ng-repeat="day in dashboard.calendar"
                              on-finish-repeat="ngRepeatFinished"
@@ -45,17 +45,17 @@
         <md-grid-tile class="last_deals_block"
             md-rowspan="4" md-colspan="2" md-colspan-sm="2" md-colspan-xs="1">
             <div class="card_content">
-                <md-content class="md-whiteframe-3dp card" layout-fill layout="column" layout-align="start">
+                <md-content class="card" layout-fill layout="column" layout-align="start">
                     <h2 class="card_header">Последние сделки</h2>
                     <div class="last_deals_container">
-                        <div class="deal_card md-whiteframe-4dp"
+                        <div class="deal_card md-whiteframe-2dp"
                              ng-repeat="deal in dashboard.deals"
                              layout="column">
                             <div class="deal_head" layout flex>
                                  <div class="deal_name auto_centered">{{deal.name}}</div>
                                  <div flex></div>
-                                 <md-button class="md-icon-button" aria-label="More"> 
-                                    <i class="material-icons">more_vert</i>
+                                 <md-button class="md-icon-button" layout aria-label="More"> 
+                                    <i class="material-icons auto_centered">more_vert</i>
                                  </md-button>
                             </div>
                             
@@ -94,10 +94,10 @@
         <md-grid-tile class="events_block"
             md-rowspan="2" md-colspan="4" md-colspan-sm="1" md-colspan-xs="2">
         <div class="card_content">     
-            <md-content class="md-whiteframe-3dp card" layout-fill layout="column" layout-align="start">
+            <md-content class="card" layout-fill layout="column" layout-align="start">
                 <h2 class="card_header">События</h2>
                 <div class="events_container">
-                    <div class="event_card md-whiteframe-4dp"
+                    <div class="event_card md-whiteframe-2dp"
                              ng-repeat="event in dashboard.events"
                              layout>
                         <i class="material-icons auto_centered" flex="10">send</i>
