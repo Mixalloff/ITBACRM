@@ -51,4 +51,27 @@ md-button {
     margin: 0;
     line-height: 100%;
 }
+
+.person_img_container {
+    height: 50px;
+    width: 50px;
+    overflow: hidden;
+    border-radius: 100%;
+}
  
+.person_img_container img {
+    height: 100%;
+}
+
+.person_desc {
+    justify-content: center;
+}
+    
+.person_desc span {
+    text-align: right;
+    padding-right: 10px;
+}
+
+.person_position {
+    font-size: .7em;
+}

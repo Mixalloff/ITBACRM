@@ -1,28 +1,32 @@
-angular.module('crmApp').controller("dashboardCtrl", ["$stateParams",
-     function ($stateParams) {
+angular.module('crmApp').controller("dashboardCtrl", ["$scope", "$stateParams",
+     function ($scope, $stateParams) {
          var vm = this;
          vm.calendar = testCalendar;
          
          var centered = false;
          
+         $scope.$on('ngRepeatFinished', function(event) {
+            calendarScroll();
+         });
+         
          // Скролл до сегодняшнего дня при загрузке календаря
-         vm.calendarScroll = function () {
-            //  var element = document.querySelector(".today");
-            //  var p = document.querySelector(".calendar_carousel_container");
-            //  if (element) {
-            //      var container = element.parentElement;
-            //     var parentWidth = container.getClientRects()[0].width;
-            //     var elementWidth = element.getClientRects()[0].width;
-            //     var insideOffset = parentWidth / 2 - elementWidth / 2;
-            //     var outsideOffset = element.getClientRects()[0].left - container.getClientRects()[0].left;
-            //     container.scrollLeft = outsideOffset - insideOffset;
-            //  }
+          function calendarScroll() {
+             var element = document.querySelector(".today");
+             var p = document.querySelector(".calendar_carousel_container");
+             if (element) {
+                 var container = element.parentElement;
+                var parentWidth = container.getClientRects()[0].width;
+                var elementWidth = element.getClientRects()[0].width;
+                var insideOffset = parentWidth / 2 - elementWidth / 2;
+                var outsideOffset = element.getClientRects()[0].left - container.getClientRects()[0].left;
+                container.scrollLeft = outsideOffset - insideOffset;
+             }
              
             //  container.scrollLeft =100;
-             var element = document.querySelector(".today");
-             if(element){
-                  element.scrollIntoView(true);
-             }
+            //  var element = document.querySelector(".today");
+            //  if(element){
+            //       element.scrollIntoView(true);
+            //  }
             
          }
      }

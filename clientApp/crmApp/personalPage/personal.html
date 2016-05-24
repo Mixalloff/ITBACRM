@@ -1,35 +1,39 @@
   <link rel="stylesheet" href="crmApp/personalPage/personal.css">
   <md-toolbar layout="row" class="header">
        <div class="md-toolbar-tools">
-        <md-button ng-show="!main.isOpen('left')" ng-click="main.toogleNav('left')" class="md-icon-button" aria-label="Settings">
+        <md-button ng-click="main.toogleNav('left')" class="md-icon-button" aria-label="Settings">
           <md-icon aria-label="Menu" class="material-icons">menu</md-icon>
         </md-button>
         <h2>
           <span>ITBA CRM</span>
         </h2>
         
-        <!--<md-input-container flex class="header_search_field" layout>
-          <label>Name</label>
-          <input type="text" class="search_input" flex-align="center"/>
-        </md-input-container>-->
-        <form flex class="searchForm" action="">
-          <!--<md-input-container flex class="header_search_field" layout>
-            <label>Name</label>
-            <input type="text" class="search_input" flex-align="center"/>
-          </md-input-container>-->
+        <!--Search-->
+        <div flex class="searchForm" action="">
           <input type="text" flex="90" placeholder="Найти клиента, документ, задачу...">
-     
             <md-button flex="10">
                 <i class="material-icons">search</i>
             </md-button>
-            
-        </form>
+        </div>
         
         <span flex></span>
+        
+        <!--Блок пользователя-->
+        <div class="person_block" layout="row">
+          <div class="person_desc" layout="column">
+            <span class="person_name">Михалев Михаил</span>
+            <span class="person_position">Менеджер</span>
+          </div>
+          <div class="person_img_container">
+            <img src="crmApp/content/images/avatar.jpeg" alt="">
+          </div>
+        </div>
+        
+        
         <md-button onclick="alert('Notifications!')" class="md-icon-button" aria-label="More"> 
           <i class="material-icons">notifications_none</i>
         </md-button>
-        <md-button ng-show="!main.isOpen('right')" ng-click="main.toogleNav('right')" class="md-icon-button" aria-label="More"> 
+        <md-button ng-click="main.toogleNav('right')" class="md-icon-button" aria-label="More"> 
           <i class="material-icons">more_vert</i>
         </md-button>
       </div>
