@@ -45,6 +45,31 @@
             <div class="card_content">
                 <md-content class="md-whiteframe-3dp card" layout-fill layout="column" layout-align="start">
                     <h2 class="card_header">Последние сделки</h2>
+                    <div class="last_deals_container">
+                        <div class="deal_card md-whiteframe-4dp"
+                             ng-repeat="deal in dashboard.deals"
+                             layout="column">
+                            <div class="deal_head" layout flex>
+                                 <div class="deal_name">{{deal.name}}</div>
+                                 <div flex></div>
+                                 <md-button class="md-icon-button" aria-label="More"> 
+                                    <i class="material-icons">more_vert</i>
+                                 </md-button>
+                            </div>
+                            
+                            <div class="deal_company_name">{{deal.company.name}}</div>
+                            <div class="deal_tasks">
+                                 <div ng-repeat="task in deal.tasks">
+                                    <div class="deal_task_name">{{task.name}}</div>
+                                </div>
+                            </div>
+                            <div class="footer_deal" layout flex>
+                                <div flex></div>
+                                <div class="deal_amount">{{deal.amount}}</div>
+                            </div>
+                            
+                        </div>
+                    </div>
                 </md-content>
             </div>
         </md-grid-tile>

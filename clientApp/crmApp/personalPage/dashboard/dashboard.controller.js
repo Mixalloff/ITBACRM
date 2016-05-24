@@ -2,33 +2,10 @@ angular.module('crmApp').controller("dashboardCtrl", ["$scope", "$stateParams",
      function ($scope, $stateParams) {
          var vm = this;
          vm.calendar = testCalendar;
-         
-         var centered = false;
-         
-         $scope.$on('ngRepeatFinished', function(event) {
-            calendarScroll();
-         });
-         
-         // Скролл до сегодняшнего дня при загрузке календаря
-          function calendarScroll() {
-             var element = document.querySelector(".today");
-             var p = document.querySelector(".calendar_carousel_container");
-             if (element) {
-                 var container = element.parentElement;
-                var parentWidth = container.getClientRects()[0].width;
-                var elementWidth = element.getClientRects()[0].width;
-                var insideOffset = parentWidth / 2 - elementWidth / 2;
-                var outsideOffset = element.getClientRects()[0].left - container.getClientRects()[0].left;
-                container.scrollLeft = outsideOffset - insideOffset;
-             }
-             
-            //  container.scrollLeft =100;
-            //  var element = document.querySelector(".today");
-            //  if(element){
-            //       element.scrollIntoView(true);
-            //  }
-            
-         }
+         vm.deals = testDeals;
+                  
+         // Ценровка календаря при загрузке
+         $scope.$on('ngRepeatFinished', calendarScroll);
      }
 ]); 
 
@@ -181,4 +158,68 @@ var testCalendar = [
             }
         ]
     },
+];
+
+ // Скролл до сегодняшнего дня при загрузке календаря
+function calendarScroll(event) {
+    var element = document.querySelector(".today");
+    if (element) {
+    var container = element.parentElement;
+    var parentWidth = container.getClientRects()[0].width;
+    var elementWidth = element.getClientRects()[0].width;
+    var insideOffset = parentWidth / 2 - elementWidth / 2;
+    var outsideOffset = element.getClientRects()[0].left - container.getClientRects()[0].left;
+    container.scrollLeft = outsideOffset - insideOffset;
+    }
+}
+
+var testDeals = [
+    {
+        name: "Разработка модуля",
+        company: {
+            name: '"ООО Прогресс"'
+        },
+        tasks: [
+            {
+                name: "Позвонить клиенту",
+                date: "02.06.2016",
+                time: "15:00",
+                type: "call",
+                id: 111
+            },
+            {
+                name: "Встреча для обсуждения деталей ТЗ",
+                date: "03.06.2016",
+                time: "18:00",
+                type: "meeting",
+                id: 112
+            }
+        ],
+        score: 7, // "теплота" клиента по 10 бальной шкале
+        amount: 80000
+    },
+    {
+        name: "Разработка модуля",
+        company: {
+            name: '"ООО Прогресс"'
+        },
+        tasks: [
+            {
+                name: "Позвонить клиенту",
+                date: "02.06.2016",
+                time: "15:00",
+                type: "call",
+                id: 111
+            },
+            {
+                name: "Встреча для обсуждения деталей ТЗ",
+                date: "03.06.2016",
+                time: "18:00",
+                type: "meeting",
+                id: 112
+            }
+        ],
+        score: 7, // "теплота" клиента по 10 бальной шкале
+        amount: 80000
+    }
 ];

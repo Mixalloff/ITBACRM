@@ -81,3 +81,37 @@ md-grid-list md-grid-tile{
 .add_task_btn .material-icons {
     font-size: 2em;
 }
+
+.deal_card{
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.deal_head button{
+    padding: 0!important;
+    margin: 0!important;
+    width: auto!important;
+    height: auto!important;
+}
+
+.deal_name {
+    margin: auto;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.deal_company_name {
+    font-size: .9em;
+    color: #737373;
+}
+
+.deal_tasks {
+    padding: 10px 0;
+    font-size: .8em;
+    color: #494949;
+}
+
+.deal_amount {
+    font-weight: 600;
+    font-size: 1.2em;
+}

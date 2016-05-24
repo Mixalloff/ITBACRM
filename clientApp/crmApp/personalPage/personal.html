@@ -21,11 +21,11 @@
         <!--Блок пользователя-->
         <div class="person_block" layout="row">
           <div class="person_desc" layout="column">
-            <span class="person_name">Михалев Михаил</span>
-            <span class="person_position">Менеджер</span>
+            <span class="person_name">{{personal.account.name}}</span>
+            <span class="person_position">{{personal.account.position}}</span>
           </div>
           <div class="person_img_container">
-            <img src="crmApp/content/images/avatar.jpeg" alt="">
+            <img ng-src="{{personal.account.photo}}" alt="">
           </div>
         </div>
         
