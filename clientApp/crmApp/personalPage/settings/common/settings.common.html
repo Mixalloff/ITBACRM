@@ -1,10 +1,10 @@
 <section class="settings_body_block">
     <h2 class="inner_header">Общие</h2>
     <div class="settings_container">
-        <div class="setting_string">
+        <div class="setting_string" layout>
             <label for="dateFormat">Формат даты:</label>
-            <md-select id="dateFormat" name="dateFormat" ng-model="dateFormat" required>
-                <!--<md-option ng-repeat="format in dateFormats">{{format}}</md-option>-->
+            <md-select id="dateFormat" name="dateFormat" ng-model="settings_common.currentDateFormat" aria-label="formatDate">
+                <md-option ng-repeat="format in settings_common.dateFormats">{{format}}</md-option>
             </md-select>
         </div>
     </div>

@@ -65,7 +65,8 @@ angular.module('crmApp').config(function ($stateProvider, $urlRouterProvider, $l
             url: '/settings',
             templateUrl: 'crmApp/personalPage/settings/settings.html',
             controller: 'settingsCtrl',
-            controllerAs: 'settings'
+            controllerAs: 'settings',
+            abstract: true
         })
         .state('personal.settings.common', {
             url: '/common',

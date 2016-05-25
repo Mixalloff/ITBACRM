@@ -14,8 +14,10 @@
 function badgeCurrentMenuRow(element, elemId, currentState) {
     if (currentState.indexOf(elemId) !== -1) {
         element.addClass('active-row');
+        element.removeClass('unactive-row');
     }
     else {
         element.removeClass('active-row');
+        element.addClass('unactive-row');
     }
 }

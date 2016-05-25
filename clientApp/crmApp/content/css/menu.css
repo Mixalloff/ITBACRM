@@ -12,6 +12,11 @@
      margin-left: 0;
      color: #1E2129;
  }
+ .menu-row i {
+    font-size: 2em!important;
+    color: #949494;
+ }
+ 
  
  .menu-label {
     width: 100%;

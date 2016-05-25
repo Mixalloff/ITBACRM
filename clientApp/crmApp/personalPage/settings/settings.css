@@ -13,10 +13,19 @@
 
 .setting_menu_block {
     transition: all 400ms ease-out 200ms;
+    padding-right: 0;
 }
 
 .setting_menu_block .active-row .menu-label{
-    /*text-align: center!important;*/
     padding-right: 30%;
-     transition: all 400ms ease-out 200ms;
+    transition: all 400ms ease-out 200ms;
+}
+
+.setting_menu_block .unactive-row .menu-label {
+    padding-right: 0;
+    transition: all 400ms ease-out 200ms;
+}
+
+.setting_string {
+    align-items: center;
 }
