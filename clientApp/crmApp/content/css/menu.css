@@ -1,6 +1,3 @@
-.unactive-row .menu-icon, .unactive-row .menu-label {
-    color: #1E2129;
-}
 .active-row .menu-icon, .active-row .menu-label {
     color: #FFF;
 }
@@ -13,6 +10,7 @@
      width: 100%!important;
      padding: 10px;
      margin-left: 0;
+     color: #1E2129;
  }
  
  .menu-label {
