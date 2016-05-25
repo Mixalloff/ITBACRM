@@ -46,7 +46,7 @@ angular.module('crmApp').config(function ($stateProvider, $urlRouterProvider, $l
         .state('personal.tasks', {
             url: '/tasks',
             templateUrl: 'crmApp/personalPage/tasks/tasks.html',
-            controller: 'tasks',
+            controller: 'tasksCtrl',
             controllerAs: 'tasks'
         })
         .state('personal.analytics', {
@@ -54,6 +54,18 @@ angular.module('crmApp').config(function ($stateProvider, $urlRouterProvider, $l
             templateUrl: 'crmApp/personalPage/analytics/analytics.html',
             controller: 'analyticsCtrl',
             controllerAs: 'analytics'
+        })
+        .state('personal.documents', {
+            url: '/documents',
+            templateUrl: 'crmApp/personalPage/documents/documents.html',
+            controller: 'documentsCtrl',
+            controllerAs: 'documents'
+        })
+        .state('personal.settings', {
+            url: '/settings',
+            templateUrl: 'crmApp/personalPage/settings/settings.html',
+            controller: 'settingsCtrl',
+            controllerAs: 'settings'
         })
         .state('page404', {
             url: '/404_page_not_found',
