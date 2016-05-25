@@ -1,5 +1,5 @@
-angular.module('crmApp').controller("personalCtrl", ["$stateParams",
-     function ($stateParams) {
+angular.module('crmApp').controller("personalCtrl", ["$stateParams", '$state',
+     function ($stateParams, $state) {
          var vm = this;
          //alert("personal: " + $stateParams.company_id);
          vm.account = testAccount;

@@ -1,3 +1,4 @@
+ // Директива, вызывающая событие окончания загрузки ngRepeat
  angular.module('crmApp').directive('onFinishRepeat', function ($timeout) {
     return {
         restrict: 'A',
