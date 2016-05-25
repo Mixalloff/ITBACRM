@@ -80,5 +80,5 @@ gulp.task('build', ['vendors_js', 'vendors_css', 'crm_js', 'crm_css','crm_fonts'
 
 // Собирает проект, запускае сервер и отслеживает изменения
 gulp.task('default', ['build', 'server', 'watch']);
-// Альтернативный вызов для запуска сервера и автосборки
-gulp.task('serve', ['default']);
+// Альтернативный вызов для запуска сервера и отслеживания изменений (без предварительной сборки)
+gulp.task('serve', ['server', 'watch']);

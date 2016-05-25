@@ -29,3 +29,7 @@
 .setting_string {
     align-items: center;
 }
+
+.settings_container {
+    padding: 20px;
+}
