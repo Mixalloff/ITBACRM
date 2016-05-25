@@ -9,10 +9,10 @@
         <md-grid-tile class="calendar_block" layout="column" layout-align="space-around stretch" 
             md-rowspan="2" md-colspan="4" md-colspan-sm="1" md-colspan-xs="2">
             <div class="card_content">
-                <md-content class="card" layout-fill layout="column" layout-align="start">
+                <md-content class="card_block" layout-fill layout="column" layout-align="start">
                     <h2 class="card_header">Календарь</h2>
                     <div class="calendar_carousel_container" layout="row" ng-init="dashboard.calendarScroll()">
-                        <div class="calendar_day md-whiteframe-2dp"
+                        <div class="calendar_day card md-whiteframe-2dp"
                              ng-class="{today: day.today}"
                              ng-repeat="day in dashboard.calendar"
                              on-finish-repeat="ngRepeatFinished"
@@ -25,14 +25,16 @@
                                     <div class="day_task" layout>
                                         <div class="day_task_options auto_centered" flex='20'>{{task.time}}</div>
                                         <div class="day_task_options auto_centered" flex='70'>{{task.name}}</div>
-                                        <i class="material-icons auto_centered">send</i>
+                                        <md-button class="md-icon-button show_task_btn no_padding_margin" layout aria-label="Show task">
+                                            <i class="material-icons auto_centered">send</i>
+                                        </md-button>
                                     </div>
                                     <md-divider></md-divider>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <md-button class="md-fab add_btn add_task_btn" aria-label="Add task">
+                    <md-button class="md-fab add_btn add_task_btn center_content" aria-label="Add task">
                         <i class="material-icons">add</i>
                     </md-button>
                 </md-content>
@@ -45,10 +47,10 @@
         <md-grid-tile class="last_deals_block"
             md-rowspan="4" md-colspan="2" md-colspan-sm="2" md-colspan-xs="1">
             <div class="card_content">
-                <md-content class="card" layout-fill layout="column" layout-align="start">
+                <md-content class="card_block" layout-fill layout="column" layout-align="start">
                     <h2 class="card_header">Последние сделки</h2>
                     <div class="last_deals_container">
-                        <div class="deal_card md-whiteframe-2dp"
+                        <div class="deal_card card md-whiteframe-2dp"
                              ng-repeat="deal in dashboard.deals"
                              layout="column">
                             <div class="deal_head" layout flex>
@@ -70,7 +72,9 @@
                                             </div>
                                         </div>
                                         <div flex></div>
-                                        <i class="material-icons auto_centered">send</i>
+                                        <md-button class="md-icon-button show_task_btn no_padding_margin" layout aria-label="Show task">
+                                            <i class="material-icons auto_centered">send</i>
+                                        </md-button>
                                     </div>
                                     <md-divider></md-divider>
                                 </div>
@@ -83,7 +87,7 @@
                             
                         </div>
                     </div>
-                    <md-button class="md-fab add_btn add_deal_btn" aria-label="Add task">
+                    <md-button class="md-fab add_btn add_deal_btn center_content" aria-label="Add task">
                         <i class="material-icons">add</i>
                     </md-button>
                 </md-content>
@@ -94,13 +98,17 @@
         <md-grid-tile class="events_block"
             md-rowspan="2" md-colspan="4" md-colspan-sm="1" md-colspan-xs="2">
         <div class="card_content">     
-            <md-content class="card" layout-fill layout="column" layout-align="start">
+            <md-content class="card_block" layout-fill layout="column" layout-align="start">
                 <h2 class="card_header">События</h2>
                 <div class="events_container">
-                    <div class="event_card md-whiteframe-2dp"
+                    <div class="event_card card md-whiteframe-2dp"
                              ng-repeat="event in dashboard.events"
                              layout>
-                        <i class="material-icons auto_centered" flex="10">send</i>
+                             
+                        <md-button class="md-icon-button show_event_btn no_padding_margin" layout aria-label="Show event">
+                            <i class="material-icons auto_centered">send</i>
+                        </md-button>
+                        
                         <div class="event_body auto_centered" flex>
                             <div class="event_name">{{event.name}}</div>
                             <div class="event_owner">{{event.owner.name}}</div>
@@ -109,7 +117,7 @@
                         <div class="event_date auto_centered">{{event.date}}</div>
                     </div>
                 </div>
-                <md-button class="md-fab add_btn add_event_btn" aria-label="Add task">
+                <md-button class="md-fab add_btn add_event_btn center_content" aria-label="Add event">
                     <i class="material-icons">add</i>
                 </md-button>
             </md-content>

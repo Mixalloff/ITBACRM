@@ -1,3 +1,7 @@
+.under_header,md-content {
+    background-color: #EAEAEA;
+}
+
 md-toolbar {
     background-color: rgb(49, 68, 121)!important;
     color: rgba(255, 255, 255, 0.87);
