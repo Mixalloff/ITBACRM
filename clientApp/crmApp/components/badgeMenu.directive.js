@@ -12,7 +12,7 @@
 
 // Проверяет, совпадают ли id пункта меню и параметр текущей страницы
 function badgeCurrentMenuRow(element, elemId, currentState) {
-    if (elemId == currentState) {
+    if (currentState.indexOf(elemId) !== -1) {
         element.addClass('active-row');
     }
     else {

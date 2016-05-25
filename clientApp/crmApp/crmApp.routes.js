@@ -67,6 +67,18 @@ angular.module('crmApp').config(function ($stateProvider, $urlRouterProvider, $l
             controller: 'settingsCtrl',
             controllerAs: 'settings'
         })
+        .state('personal.settings.common', {
+            url: '/common',
+            templateUrl: 'crmApp/personalPage/settings/common/settings.common.html',
+            controller: 'settings_commonCtrl',
+            controllerAs: 'settings_common'
+        })
+        .state('personal.settings.sales_funnel', {
+            url: '/sales_funnel',
+            templateUrl: 'crmApp/personalPage/settings/sales_funnel/settings.sales_funnel.html',
+            controller: 'settings_sales_funnelCtrl',
+            controllerAs: 'settings_sales_funnel'
+        })
         .state('page404', {
             url: '/404_page_not_found',
             templateUrl: 'crmApp/page404/page404.html'

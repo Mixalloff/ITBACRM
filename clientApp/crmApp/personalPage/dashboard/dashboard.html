@@ -10,7 +10,7 @@
             md-rowspan="2" md-colspan="4" md-colspan-sm="1" md-colspan-xs="2">
             <div class="card_content">
                 <md-content class="card_block" layout-fill layout="column" layout-align="start">
-                    <h2 class="card_header">Календарь</h2>
+                    <h2 class="inner_header">Календарь</h2>
                     <div class="calendar_carousel_container" layout="row" ng-init="dashboard.calendarScroll()">
                         <div class="calendar_day card md-whiteframe-2dp"
                              ng-class="{today: day.today}"
@@ -48,7 +48,7 @@
             md-rowspan="4" md-colspan="2" md-colspan-sm="2" md-colspan-xs="1">
             <div class="card_content">
                 <md-content class="card_block" layout-fill layout="column" layout-align="start">
-                    <h2 class="card_header">Последние сделки</h2>
+                    <h2 class="inner_header">Последние сделки</h2>
                     <div class="last_deals_container">
                         <div class="deal_card card md-whiteframe-2dp"
                              ng-repeat="deal in dashboard.deals"
@@ -99,7 +99,7 @@
             md-rowspan="2" md-colspan="4" md-colspan-sm="1" md-colspan-xs="2">
         <div class="card_content">     
             <md-content class="card_block" layout-fill layout="column" layout-align="start">
-                <h2 class="card_header">События</h2>
+                <h2 class="inner_header">События</h2>
                 <div class="events_container">
                     <div class="event_card card md-whiteframe-2dp"
                              ng-repeat="event in dashboard.events"

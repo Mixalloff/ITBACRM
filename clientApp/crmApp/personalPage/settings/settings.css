@@ -1,0 +1,22 @@
+.settings_menu_label {
+    text-align: right;
+    padding-right: 10px;
+}
+
+.settings_header {
+    padding: 30px 30px 10px 30px;
+}
+
+.settings_body_block {
+    padding: 30px;
+}
+
+.setting_menu_block {
+    transition: all 400ms ease-out 200ms;
+}
+
+.setting_menu_block .active-row .menu-label{
+    /*text-align: center!important;*/
+    padding-right: 30%;
+     transition: all 400ms ease-out 200ms;
+}

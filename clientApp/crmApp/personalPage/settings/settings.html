@@ -1,1 +1,22 @@
-<div>Settings</div>
+<link rel="stylesheet" href="crmApp/personalPage/settings/settings.css">
+<section class="settings_container full_width" layout="row">
+    <md-content layout-fill layout="row" layout-align="start">
+        <div flex="20" class="setting_menu_block">
+            <h2 class="inner_header settings_header">Настройки</h2>
+            <a ui-sref="personal.settings.common">
+              <md-button id="personal.settings.common" class="menu-row" badge-menu layout="row" > 
+                <span class="menu-label settings_menu_label">Общие</span>
+              </md-button>
+            </a>
+            <a ui-sref="personal.settings.sales_funnel">
+              <md-button id="personal.settings.sales_funnel" class="menu-row" badge-menu layout="row" > 
+                <span class="menu-label settings_menu_label">Воронка</span>
+              </md-button>
+            </a>
+        </div>
+        <md-divider></md-divider>
+        <div flex="80" class="settings_body">
+            <ui-view class="full_width"></ui-view>
+        </div>
+    </md-content>
+</section>
