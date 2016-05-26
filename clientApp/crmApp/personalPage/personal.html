@@ -2,7 +2,7 @@
   <md-toolbar layout="row" class="header">
        <div class="md-toolbar-tools">
         <md-button ng-click="main.toogleNav('left')" class="md-icon-button" aria-label="Settings">
-          <md-icon aria-label="Menu" class="material-icons">menu</md-icon>
+          <md-icon md-font-library="material-icons">menu</md-icon>
         </md-button>
         <h2>
           <span>ITBA CRM</span>
@@ -11,8 +11,8 @@
         <!--Search-->
         <div flex class="searchForm" action="">
           <input type="text" flex="90" placeholder="Найти клиента, документ, задачу...">
-            <md-button flex="10">
-                <i class="material-icons">search</i>
+            <md-button class="md-icon-button" flex="10">
+                <md-icon md-font-library="material-icons">search</md-icon>
             </md-button>
         </div>
         
@@ -31,10 +31,10 @@
         
         
         <md-button onclick="alert('Notifications!')" class="md-icon-button" aria-label="More"> 
-          <i class="material-icons">notifications_none</i>
+          <md-icon md-font-library="material-icons">notifications_none</md-icon>
         </md-button>
         <md-button ng-click="main.toogleNav('right')" class="md-icon-button" aria-label="More"> 
-          <i class="material-icons">more_vert</i>
+          <md-icon md-font-library="material-icons">more_vert</md-icon>
         </md-button>
       </div>
        
@@ -49,48 +49,41 @@
             <div class="menu-header-label">Меню</div>
           </md-toolbar>
           <md-content flex id="content" flex role="navigation">
-            <a ui-sref="personal.dashboard">
-              <md-button id="personal.dashboard" class="menu-row" badge-menu layout="row" ng-click="main.toogleNav('left')" > 
+            
+              <md-button ui-sref="personal.dashboard" id="personal.dashboard" class="menu-row" badge-menu layout="row" ng-click="main.toogleNav('left')" > 
                 <span class="menu-label">Рабочий стол</span>
-                <i class="material-icons menu-icon">desktop_windows </i>
+                <md-icon md-font-library="material-icons">desktop_windows</md-icon>
               </md-button>
-            </a>
-            <a ui-sref="personal.deals">
-              <md-button id="personal.deals" class="menu-row" badge-menu layout="row" ng-click="main.toogleNav('left')" > 
+              <md-button ui-sref="personal.deals" id="personal.deals" class="menu-row" badge-menu layout="row" ng-click="main.toogleNav('left')" > 
                 <span class="menu-label">Сделки</span>
-                <i class="material-icons menu-icon">attach_money</i><div flex></div>
+                <md-icon md-font-library="material-icons">attach_money</md-icon>
+                <div flex></div>
               </md-button>
-            </a>
-            <a ui-sref="personal.contacts">
-              <md-button id="personal.contacts" class="menu-row" badge-menu layout="row" ng-click="main.toogleNav('left')" > 
+              <md-button ui-sref="personal.contacts" id="personal.contacts" class="menu-row" badge-menu layout="row" ng-click="main.toogleNav('left')" > 
                 <span class="menu-label">Контакты</span>
-                <i class="material-icons menu-icon">account_box</i><div flex></div>
+                <md-icon md-font-library="material-icons">account_box</md-icon>
+                <div flex></div>
               </md-button>
-            </a>
-            <a ui-sref="personal.tasks">
-              <md-button id="personal.tasks" class="menu-row" badge-menu layout="row" ng-click="main.toogleNav('left')" > 
+              <md-button ui-sref="personal.tasks" id="personal.tasks" class="menu-row" badge-menu layout="row" ng-click="main.toogleNav('left')" > 
                 <span class="menu-label">Задачи</span>
-                <i class="material-icons menu-icon">today</i><div flex></div>
+                <md-icon md-font-library="material-icons">today</md-icon>
+                <div flex></div>
               </md-button>
-            </a>
-            <a ui-sref="personal.analytics">
-              <md-button id="personal.analytics" class="menu-row" badge-menu layout="row" ng-click="main.toogleNav('left')" > 
+              <md-button ui-sref="personal.analytics" id="personal.analytics" class="menu-row" badge-menu layout="row" ng-click="main.toogleNav('left')" > 
                 <span class="menu-label">Аналитика</span>
-                <i class="material-icons menu-icon">pie_chart</i><div flex></div>
+                <md-icon md-font-library="material-icons">pie_chart</md-icon>
+                <div flex></div>
               </md-button>
-            </a>
-            <a ui-sref="personal.documents">
-              <md-button id="personal.documents" class="menu-row" badge-menu layout="row" ng-click="main.toogleNav('left')" > 
+              <md-button ui-sref="personal.documents" id="personal.documents" class="menu-row" badge-menu layout="row" ng-click="main.toogleNav('left')" > 
                 <span class="menu-label">Документы</span>
-                <i class="material-icons menu-icon">description</i><div flex></div>
+                <md-icon md-font-library="material-icons">description</md-icon>
+                  <div flex></div>
               </md-button>
-            </a>
-            <a ui-sref="personal.settings.common">
-              <md-button id="personal.settings" class="menu-row" badge-menu layout="row" ng-click="main.toogleNav('left')" > 
+              <md-button ui-sref="personal.settings.common" id="personal.settings" class="menu-row" badge-menu layout="row" ng-click="main.toogleNav('left')" > 
                 <span class="menu-label">Настройки</span>
-                <i class="material-icons menu-icon">settings</i><div flex></div>
+                <md-icon md-font-library="material-icons">settings</md-icon>
+                <div flex></div>
               </md-button>
-            </a>
             
           </md-content>          
         </md-sidenav>

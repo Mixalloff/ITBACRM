@@ -10,15 +10,15 @@
            templateElement.append("<label flex='20'>" + templateAttrs.settingLabel + "</label>");
            // select опций
            templateElement.append('<md-select aria-label="' + templateAttrs.settingLabel + '"' +
-                                             'flex="20"' +
-                                             'ng-model="' + templateAttrs.settingCurrent + '"' + 
-                                             'ng-change="' + templateAttrs.onchangeSetting + '(' + templateAttrs.settingCurrent + ', ' + templateAttrs.configItems + ')">' + 
-                                        '<md-option ng-value="item"' + 
-                                                'ng-repeat="item in ' + templateAttrs.configItems + '"' + 
-                                                'ng-selected="item.isSelected">' + 
-                                            '{{item.name}}' + 
-                                        '</md-option>' + 
-                                    '</md-select>');
+                                  '           flex="20"' +
+                                  '           ng-model="' + templateAttrs.settingCurrent + '"' + 
+                                  '           ng-change="' + templateAttrs.onchangeSetting + '(' + templateAttrs.settingCurrent + ', ' + templateAttrs.configItems + ')">' + 
+                                  '    <md-option ng-value="item"' + 
+                                  '               ng-repeat="item in ' + templateAttrs.configItems + '"' + 
+                                  '               ng-selected="item.isSelected">' + 
+                                  '       {{item.name}}' + 
+                                  '    </md-option>' + 
+                                  '</md-select>');
            // Строка с примером вывода
            templateElement.append("<div class='example_value'>{{" + templateAttrs.settingCurrent + ".example}}</div>");
         }

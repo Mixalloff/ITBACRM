@@ -14,7 +14,8 @@
                        placeholder="Введите название этапа воронки"
                        aria-label="newStageName">
             </md-input-container>
-            <div md-color-picker
+            <div class="add_stage_color"
+                 md-color-picker
                  type="0"
                  ng-model="settings_sales_funnel.color"
                  label="Выберите цвет"
@@ -23,7 +24,7 @@
                  md-color-generic-palette="false"
                  md-color-history="false">
             </div> 
-            <md-button class="md-raised add_stage_btn"> Добавить </md-button>
+            <md-button class="md-raised add_stage_btn" ng-click="settings_sales_funnel.addStage($event)"> Добавить </md-button>
         </div>
         
         <div class="exist_stages">
@@ -32,7 +33,15 @@
                     <div class="stage_color" ng-style="settings_sales_funnel.setColor(stage.color)"></div>
                 </div>
                 <div class="stage_name_container">{{stage.name}}</div>
-                <div class="stage_action_container"></div>
+                <div class="stage_action_container">
+                    <md-button class="md-icon-button launch" >
+                        <md-icon md-font-library="material-icons">mode_edit</md-icon>
+                    </md-button>
+                    <md-button class="md-icon-button launch" >
+                        <md-icon md-font-library="material-icons">delete_forever</md-icon>
+                    </md-button>
+                    
+                </div>
             </div>
         </div>
         

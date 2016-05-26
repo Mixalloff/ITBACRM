@@ -33,3 +33,12 @@
     align-items: center; 
     /*padding: 20px;*/
 }
+
+.add_stage_color {
+    margin-left: 50px;
+}
+
+.add_stage_color md-icon {
+    padding: 0 10px;
+}
+    
