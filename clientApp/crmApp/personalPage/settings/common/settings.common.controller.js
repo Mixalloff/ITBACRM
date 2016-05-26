@@ -1,10 +1,11 @@
 angular.module('crmApp').controller("settings_commonCtrl", ["$stateParams",
      function ($stateParams) {
          var vm = this;
-         vm.dateFormats  = config.dateFormats;
-         vm.timeFormats  = config.timeFormats;
-         vm.hoursFormats = config.hoursFormats;
-         
+        //  vm.dateFormats  = config.dateFormats;
+        //  vm.timeFormats  = config.timeFormats;
+        //  vm.hoursFormats = config.hoursFormats;
+        //  vm.currency     = config.currency;
+         vm.config = config;
          vm.select = select;
      }
 ]); 
@@ -77,4 +78,28 @@ var config = {
             isSelected: false // Выбранный в данный момент
         }
     ],
+    // Валюта, используемая в расчетах, записях и т.д.
+    currency: [
+        {
+            name: 'Рубль',
+            value: 'RUB',
+            example: '1 300 руб.',
+            isCurrent: true,
+            isSelected: true,
+        },
+        {
+            name: 'Доллар',
+            value: 'USD',
+            example: '1 300 $',
+            isCurrent: false,
+            isSelected: false,
+        },
+        {
+            name: 'Евро',
+            value: 'EUR',
+            example: '1 300 eur',
+            isCurrent: false,
+            isSelected: false,
+        },
+    ]
 }

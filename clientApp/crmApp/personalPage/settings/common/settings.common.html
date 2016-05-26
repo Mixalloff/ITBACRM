@@ -1,56 +1,26 @@
 <section class="settings_body_block">
     <h2 class="inner_header">Общие</h2>
     <div class="settings_container">
-        <div class="setting_string" layout>
-            <label flex="20" for="dateFormat">Формат даты:</label>
-            <md-select id="dateFormat"
-                       name="dateFormat"
-                       ng-model="settings_common.currentDateFormat"
-                       aria-label="formatDate"
-                       ng-change="settings_common.select(settings_common.currentDateFormat, settings_common.dateFormats)">
-                <md-option ng-value="item"
-                           ng-repeat="item in settings_common.dateFormats"
-                           ng-selected="item.isSelected">
-                    {{item.name}}
-                </md-option>
-            </md-select>
-            <div class="example_value">{{settings_common.currentDateFormat.example}}</div>
-        </div>
-        
-        <div class="setting_string" layout>
-            <label flex="20">Формат времени:</label>
-            <md-select name="timeFormat"
-                       ng-model="settings_common.currentTimeFormat"
-                       aria-label="formatTime"
-                       ng-change="settings_common.select(settings_common.currentTimeFormat, settings_common.timeFormats)">
-                <md-option ng-value="item"
-                           ng-repeat="item in settings_common.timeFormats"
-                           ng-selected="item.isSelected">
-                    {{item.name}}
-                </md-option>
-            </md-select>
-            <div class="example_value">{{settings_common.currentTimeFormat.example}}</div>
-        </div>
-        <div class="setting_string" layout>
-            <label flex="20" for="hoursFormat">Часовой формат:</label>
-            <md-select id="hoursFormat"
-                       name="hoursFormat"
-                       ng-model="settings_common.currentHoursFormat"
-                       aria-label="formatHours"
-                       ng-change="settings_common.select(settings_common.currentHoursFormat, settings_common.hoursFormats)">
-                <md-option ng-value="item"
-                           ng-repeat="item in settings_common.hoursFormats"
-                           ng-selected="item.isSelected">
-                    {{item.name}}
-                </md-option>
-            </md-select>
-            <div class="example_value">{{settings_common.currentHoursFormat.example}}</div>
-        </div>
-        <!--<setting-string setting-label="asdasdssa"
-                        config-items="settings_common.hoursFormats"
+        <setting-string setting-label="Формат даты:"
+                        config-items="settings_common.config.dateFormats"
+                        setting-current="settings_common.currentDateFormat"
+                        onchange-setting="settings_common.select">
+        </setting-string>
+        <setting-string setting-label="Формат времени:"
+                        config-items="settings_common.config.timeFormats"
+                        setting-current="settings_common.currentTimeFormat"
+                        onchange-setting="settings_common.select">
+        </setting-string>
+        <setting-string setting-label="Часовой формат:"
+                        config-items="settings_common.config.hoursFormats"
                         setting-current="settings_common.currentHoursFormat"
-                        onchange-setting="settings_common.select"
-                         ></setting-string>-->
+                        onchange-setting="settings_common.select"/>
+        </setting-string>
+        <setting-string setting-label="Валюта:"
+                        config-items="settings_common.config.currency"
+                        setting-current="settings_common.currentCurrency"
+                        onchange-setting="settings_common.select"/>
+        </setting-string>
         <!--<md-button class="md-raised">Сохранить</md-button>-->
     </div>
 </section>

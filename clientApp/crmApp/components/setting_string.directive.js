@@ -9,7 +9,7 @@
            // Метка для настройки
            templateElement.append("<label flex='20'>" + templateAttrs.settingLabel + "</label>");
            // select опций
-           templateElement.append('<md-select ng-model="' + templateAttrs.settingCurrent + '"' + 
+           templateElement.append('<md-select flex="20" ng-model="' + templateAttrs.settingCurrent + '"' + 
                                             'ng-change="' + templateAttrs.onchangeSetting + '(' + templateAttrs.settingCurrent + ', ' + templateAttrs.configItems + ')">' + 
                                         '<md-option ng-value="item"' + 
                                                 'ng-repeat="item in ' + templateAttrs.configItems + '"' + 
@@ -32,7 +32,7 @@
 // setting-current - объект текущего состояния (settings_common.currentHoursFormat = ngModel)
 // config-items - массив объектов для select-a (config.dateFormats)
 /* 
-<setting-string setting-label="asdasdssa"
+<setting-string setting-label="Часовой формат:"
                    config-items="settings_common.hoursFormats"
                    setting-current="settings_common.currentHoursFormat"
                    onchange-setting="settings_common.select">
