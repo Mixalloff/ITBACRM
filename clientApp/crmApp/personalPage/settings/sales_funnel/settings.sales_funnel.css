@@ -1,0 +1,35 @@
+.add_stage_block {
+    align-items: center;
+}
+
+.add_stage_btn {
+    height: 0;
+    padding: 0 50px;
+    background: #314479!important;
+    color: white!important;
+    margin-left: 50px;
+}
+
+.add_stage_label {
+    font-weight: 600;
+    color: #717171;
+}
+
+.stage_color {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #fff;
+    border-radius: 100%;
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.14);
+    width: 20px;
+    height: 20px;
+}
+
+.stage_name_container {
+    padding: 20px; 
+}
+
+.stage_block {
+    align-items: center; 
+    /*padding: 20px;*/
+}

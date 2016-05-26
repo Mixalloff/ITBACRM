@@ -1,3 +1,40 @@
+<link rel="stylesheet" href="crmApp/personalPage/settings/sales_funnel/settings.sales_funnel.css">
 <section class="settings_body_block">
     <h2 class="inner_header">Воронка</h2>
+    <div class="settings_container">
+        <!--<div md-color-picker="settings_sales_funnel.options" ng-model="settings_sales_funnel.color"></div>-->
+        <span class="add_stage_label">Добавить этап</span>
+        <!--https://github.com/brianpkelley/md-color-picker-->
+        <div class="add_stage_block" layout>
+            <md-input-container class="md-block" flex-gt-sm flex="30">
+                <input name="newStageName"
+                       type="text"
+                       ng-model="settings_sales_funnel.newStageName"
+                       minlength="number"
+                       placeholder="Введите название этапа воронки"
+                       aria-label="newStageName">
+            </md-input-container>
+            <div md-color-picker
+                 type="0"
+                 ng-model="settings_sales_funnel.color"
+                 label="Выберите цвет"
+                 icon="colorize"
+                 default="#f00"
+                 md-color-generic-palette="false"
+                 md-color-history="false">
+            </div> 
+            <md-button class="md-raised add_stage_btn"> Добавить </md-button>
+        </div>
+        
+        <div class="exist_stages">
+            <div class="stage_block" layout ng-repeat="stage in settings_sales_funnel.config.sales_funnel.stages">
+                <div class="stage_color_container">
+                    <div class="stage_color" ng-style="settings_sales_funnel.setColor(stage.color)"></div>
+                </div>
+                <div class="stage_name_container">{{stage.name}}</div>
+                <div class="stage_action_container"></div>
+            </div>
+        </div>
+        
+    </div>
 </section>
