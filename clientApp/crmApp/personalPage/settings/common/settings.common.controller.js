@@ -1,7 +1,7 @@
 angular.module('crmApp').controller("settings_commonCtrl", ["$stateParams",
      function ($stateParams) {
          var vm = this;
-         vm.config = config;
+         vm.config = configCommon;
          vm.select = select;
      }
 ]); 
@@ -15,7 +15,7 @@ function select(item, mas) {
 }
 
 // Конфигурация настроек
-var config = {
+var configCommon = {
     // Форматы дат для заполнения select-а
     dateFormats: [
         {

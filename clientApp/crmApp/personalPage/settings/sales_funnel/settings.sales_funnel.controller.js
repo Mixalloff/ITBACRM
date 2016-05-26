@@ -1,7 +1,7 @@
 angular.module('crmApp').controller("settings_sales_funnelCtrl", ["$stateParams",
      function ($stateParams) {
          var vm = this;
-         vm.config = config;
+         vm.config = configFunnel;
          vm.setColor = setColor;
      }
 ]); 
@@ -10,7 +10,7 @@ function setColor(color){
     return { "background-color": color };
 }
 
-var config = {
+var configFunnel = {
     sales_funnel: {
         stages: [
             {
