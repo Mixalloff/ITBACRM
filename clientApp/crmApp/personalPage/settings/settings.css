@@ -33,3 +33,9 @@
 .settings_container {
     padding: 20px;
 }
+
+.example_value {
+    color: #969696;
+    font-style: italic;
+    padding-left: 20px;
+}
