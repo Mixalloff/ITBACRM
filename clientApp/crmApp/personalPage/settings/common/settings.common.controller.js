@@ -1,10 +1,6 @@
 angular.module('crmApp').controller("settings_commonCtrl", ["$stateParams",
      function ($stateParams) {
          var vm = this;
-        //  vm.dateFormats  = config.dateFormats;
-        //  vm.timeFormats  = config.timeFormats;
-        //  vm.hoursFormats = config.hoursFormats;
-        //  vm.currency     = config.currency;
          vm.config = config;
          vm.select = select;
      }

@@ -1,26 +1,26 @@
 <section class="settings_body_block">
     <h2 class="inner_header">Общие</h2>
     <div class="settings_container">
-        <setting-string setting-label="Формат даты:"
-                        config-items="settings_common.config.dateFormats"
-                        setting-current="settings_common.currentDateFormat"
-                        onchange-setting="settings_common.select">
-        </setting-string>
-        <setting-string setting-label="Формат времени:"
-                        config-items="settings_common.config.timeFormats"
-                        setting-current="settings_common.currentTimeFormat"
-                        onchange-setting="settings_common.select">
-        </setting-string>
-        <setting-string setting-label="Часовой формат:"
-                        config-items="settings_common.config.hoursFormats"
-                        setting-current="settings_common.currentHoursFormat"
-                        onchange-setting="settings_common.select"/>
-        </setting-string>
-        <setting-string setting-label="Валюта:"
-                        config-items="settings_common.config.currency"
-                        setting-current="settings_common.currentCurrency"
-                        onchange-setting="settings_common.select"/>
-        </setting-string>
+        <setting-string-select setting-label="Формат даты:"
+                               config-items="settings_common.config.dateFormats"
+                               setting-current="settings_common.currentDateFormat"
+                               onchange-setting="settings_common.select">
+        </setting-string-select>
+        <setting-string-select setting-label="Формат времени:"
+                               config-items="settings_common.config.timeFormats"
+                               setting-current="settings_common.currentTimeFormat"
+                               onchange-setting="settings_common.select">
+        </setting-string-select>
+        <setting-string-select setting-label="Часовой формат:"
+                               config-items="settings_common.config.hoursFormats"
+                               setting-current="settings_common.currentHoursFormat"
+                               onchange-setting="settings_common.select"/>
+        </setting-string-select>
+        <setting-string-select setting-label="Валюта:"
+                               config-items="settings_common.config.currency"
+                               setting-current="settings_common.currentCurrency"
+                               onchange-setting="settings_common.select"/>
+        </setting-string-select>
         <!--<md-button class="md-raised">Сохранить</md-button>-->
     </div>
 </section>
