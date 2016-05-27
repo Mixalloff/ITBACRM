@@ -30,8 +30,16 @@ function addStage(ev) {
 }
 
 // Удаление этапа воронки
-function deleteStage(stage, mas) {
-    for (var i = 0; i < mas.length; i++) {
+function deleteStage(ev, stage, mas) {
+    var confirm = this.mdDialog.confirm()
+          .title('Удалить?')
+          .textContent('Изменение необратимо. Удалить?')
+          .ariaLabel('удалить')
+          .targetEvent(ev)
+          .ok('Удалить')
+          .cancel('Отмена');
+    this.mdDialog.show(confirm).then(function() {
+        for (var i = 0; i < mas.length; i++) {
         if (stage.num == mas[i].num) {
             for (var j = i; j < mas.length; j++) {
                 mas[j].num--;
@@ -40,6 +48,10 @@ function deleteStage(stage, mas) {
             return;
         }
     }
+    }, function() {
+      // Отмена
+    });
+    
 }
 
 // Исправление существующего этапа воронки
