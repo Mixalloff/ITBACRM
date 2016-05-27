@@ -49,7 +49,7 @@ function startStageDialog(ev) {
     })
     .then(function(newStage) {
         if (controller.dialogParams.getDialogParams().isAddedState) {
-            controller.config.sales_funnel.stages.push(newStage);
+            insertToStageArray(newStage, controller.config.sales_funnel.stages);
             controller.config.sales_funnel.countUserStages++;
         }
         else {
@@ -58,6 +58,22 @@ function startStageDialog(ev) {
     }, function() {
         // закрыто диалоговое окно
     });
+}
+
+// Вставка в массив этапов воронки (учитывает последовательность по параметру num)
+function insertToStageArray(elem, mas) {
+    for (var i = 0; i < mas.length; i++) {
+        if (mas[i].num == elem.num) {
+            // Вставка
+            for(var j = i; j < mas.length; j++) {
+                mas[j].num++;
+            }
+            mas.splice(i, 0, elem);
+            return;
+        }
+    }
+    // Если нет совпадений
+    mas.push(elem);
 }
 
 // Обработка подтверждения действия и закрытия диалогового окна
