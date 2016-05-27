@@ -60,3 +60,11 @@
 .system_stages_container {
     margin-left: 2em;
 }
+
+.edit_btn:hover md-icon{
+    color: green;
+}
+
+.del_btn:hover md-icon{
+    color: red;
+}

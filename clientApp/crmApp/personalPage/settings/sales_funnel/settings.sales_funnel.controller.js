@@ -3,6 +3,7 @@ angular.module('crmApp').controller("settings_sales_funnelCtrl", ["$stateParams"
          var vm = this;
          vm.addStage = addStage;
          vm.config = configFunnel;
+         vm.deleteStage = deleteStage;
          vm.dialogCancel = dialogCancel;
          vm.dialogDone = dialogDone;
          // Объект этапа воронки
@@ -26,6 +27,19 @@ function addStage(ev) {
     this.dialogObject.setStageEntity(configFunnel.sales_funnel.countUserStages + 1);
     this.dialogParams.setDialogParams(true);
     this.startStageDialog(ev);
+}
+
+// Удаление этапа воронки
+function deleteStage(stage, mas) {
+    for (var i = 0; i < mas.length; i++) {
+        if (stage.num == mas[i].num) {
+            for (var j = i; j < mas.length; j++) {
+                mas[j].num--;
+            }
+            mas.splice(i, 1);
+            return;
+        }
+    }
 }
 
 // Исправление существующего этапа воронки

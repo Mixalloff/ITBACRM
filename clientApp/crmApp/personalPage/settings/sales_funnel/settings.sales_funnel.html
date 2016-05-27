@@ -15,10 +15,10 @@
                 </div>
                 <div class="stage_name_container">{{stage.name}}</div>
                 <div class="stage_action_container">
-                    <md-button class="md-icon-button launch" ng-click="settings_sales_funnel.editStage($event, stage)">
-                        <md-icon md-font-library="material-icons">mode_edit</md-icon>
+                    <md-button class="md-icon-button launch edit_btn" ng-click="settings_sales_funnel.editStage($event, stage)">
+                        <md-icon md-font-library="material-icons ">mode_edit</md-icon>
                     </md-button>
-                    <md-button class="md-icon-button launch" >
+                    <md-button class="md-icon-button launch del_btn" ng-click="settings_sales_funnel.deleteStage(stage, settings_sales_funnel.config.sales_funnel.stages)">
                         <md-icon md-font-library="material-icons">delete_forever</md-icon>
                     </md-button>
                 </div>
