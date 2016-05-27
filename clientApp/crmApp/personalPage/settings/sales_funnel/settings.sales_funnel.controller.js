@@ -93,6 +93,9 @@ var configFunnel = {
                 name: "Обсуждение деталей",
                 color: "#F0F",
             },
+            
+        ],
+        systemStages: [
             {
                 id: 1000,
                 num: 1000,

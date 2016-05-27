@@ -34,6 +34,15 @@ md-button {
     font-size: 1.3em;
 }
 
+.inner_sub_header {
+    font-family: -apple-system,BlinkMacSystemFont,'Segoe UI','Trebuchet MS','Helvetica Neue','Lucida Grande',sans-serif!important;
+    text-transform: uppercase;
+    margin: 0;
+    font-weight: 500;
+    letter-spacing: 2px;
+    font-size: 1.1em;
+}
+
 .under_header {
     margin-top: 60px;
 }
