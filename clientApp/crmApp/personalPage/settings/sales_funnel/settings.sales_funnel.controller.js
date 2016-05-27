@@ -1,67 +1,97 @@
-angular.module('crmApp').controller("settings_sales_funnelCtrl", ["$stateParams", "$mdDialog",
-     function ($stateParams, $mdDialog) {
+angular.module('crmApp').controller("settings_sales_funnelCtrl", ["$stateParams", "$mdDialog", "stageDialogParams", "dialogStageEntity",
+     function ($stateParams, $mdDialog, stageDialogParams, dialogStageEntity) {
          var vm = this;
+         vm.addStage = addStage;
          vm.config = configFunnel;
+         vm.dialogCancel = dialogCancel;
+         vm.dialogDone = dialogDone;
+         // Объект этапа воронки
+         vm.dialogObject = dialogStageEntity;
+         // Параметры диалогового окна
+         vm.dialogParams = stageDialogParams;
+         vm.editStage = editStage;
+         vm.mdDialog = $mdDialog;
          vm.setColor = setColor;
-         vm.addStage = function(ev) {
-                $mdDialog.show({
-                    controller: 'settings_sales_funnelCtrl',
-                    templateUrl: 'crmApp/personalPage/settings/sales_funnel/content/edit_funnel_stage.dialog.html',
-                    parent: angular.element(document.body),
-                    targetEvent: ev,
-                    clickOutsideToClose:true,
-                    //   fullscreen: useFullScreen
-                })
-                .then(function(answer) {
-                    $scope.status = 'You said the information was "' + answer + '".';
-                }, function() {
-                    $scope.status = 'You cancelled the dialog.';
-                });
-            }
+         vm.startStageDialog = startStageDialog;
      }
 ]); 
 
+// Установка цвета в строке этапа воронки
 function setColor(color){
     return { "background-color": color };
 }
 
+// Добавление этапа воронки
 function addStage(ev) {
-    $mdDialog.show({
-      controller: settings_sales_funnelCtrl,
-      templateUrl: 'crmApp/personalPage/settings/sales_funnel/edit_funnel_stage.dialog.html',
-      parent: angular.element(document.body),
-      targetEvent: ev,
-      clickOutsideToClose:true,
-    //   fullscreen: useFullScreen
+    this.dialogObject.setStageEntity(configFunnel.sales_funnel.countUserStages + 1);
+    this.dialogParams.setDialogParams(true);
+    this.startStageDialog(ev);
+}
+
+// Исправление существующего этапа воронки
+function editStage(ev, editedStage) {
+    this.dialogParams.setDialogParams(false);
+    this.dialogObject.setStageEntityObject(editedStage);
+    this.editedStage = editedStage;
+    this.startStageDialog(ev, this.mdDialog);
+}
+
+// Запуск диалогового окна
+function startStageDialog(ev) {
+    var controller = this;
+    controller.mdDialog.show({
+        controller: 'settings_sales_funnelCtrl',
+        controllerAs: 'settings_sales_funnel',
+        templateUrl: 'crmApp/personalPage/settings/sales_funnel/content/edit_funnel_stage.dialog.html',
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        clickOutsideToClose: false,
     })
-    .then(function(answer) {
-      $scope.status = 'You said the information was "' + answer + '".';
+    .then(function(newStage) {
+        if (controller.dialogParams.getDialogParams().isAddedState) {
+            controller.config.sales_funnel.stages.push(newStage);
+            controller.config.sales_funnel.countUserStages++;
+        }
+        else {
+            alert('edit');
+        }
     }, function() {
-      $scope.status = 'You cancelled the dialog.';
+        // закрыто диалоговое окно
     });
 }
 
+// Обработка подтверждения действия и закрытия диалогового окна
+// stageObj (Object) - объект изменений
+function dialogDone(stageObj) {
+    this.mdDialog.hide(stageObj);
+}
+
+// Нажатие отмены (закрыть)
+function dialogCancel($mdDialog) {
+    this.mdDialog.cancel();
+}
+
+// Конфигурация для воронки
 var configFunnel = {
     sales_funnel: {
         stages: [
             {
                 id: 1,
-                num: 1, // порядковый номер этапа
-                name: "Первичный контакт",
-                color: "#00F",
+                num: 1,
+                name: "Заявки",
+                color: "#FF0"
             },
             {
                 id: 2,
                 num: 2, // порядковый номер этапа
-                name: "Обсуждение деталей",
-                color: "#F0F",
+                name: "Первичный контакт",
+                color: "#00F",
             },
             {
-                id: 0,
-                num: 1,
-                name: "Заявки",
-                color: "#FF0",
-                system: "LEADS"
+                id: 3,
+                num: 3, // порядковый номер этапа
+                name: "Обсуждение деталей",
+                color: "#F0F",
             },
             {
                 id: 1000,
@@ -78,6 +108,6 @@ var configFunnel = {
                 system: "CANCELED"
             }
         ],
-        
+        countUserStages: 3
     }
 }

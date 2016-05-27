@@ -69,7 +69,7 @@ var configCommon = {
         {
             name: "12",
             value: "12",
-            example: "3.35 am",
+            example: "3.35 pm",
             isCurrent: false, // Сохраненный в настройках
             isSelected: false // Выбранный в данный момент
         }

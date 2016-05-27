@@ -2,43 +2,53 @@
   <form>
     <md-toolbar>
       <div class="md-toolbar-tools">
-        <h2>Добавить этап</h2>
+        <h2>{{settings_sales_funnel.dialogParams.getDialogParams().dialogHeadText}}</h2>
         <span flex></span>
-        <md-button class="md-icon-button" ng-click="cancel()">
-          <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        <md-button class="md-icon-button" ng-click="settings_sales_funnel.dialogCancel()">
+          <md-icon md-font-library="material-icons">close</md-icon>
         </md-button>
       </div>
     </md-toolbar>
     <md-dialog-content>
       <div class="md-dialog-content">
-        <h2>Установите параметры этапа</h2>
-        <md-input-container class="md-block" flex-gt-sm>
+        <h3 class="inner_header">Установите параметры этапа</h3>
+        <md-input-container class="md-block dialog_input" flex-gt-sm>
                 <input name="newStageName"
                        type="text"
-                       ng-model="settings_sales_funnel.newStageName"
+                       ng-model="settings_sales_funnel.dialogObject.getStageEntity().name"
                        minlength="number"
                        placeholder="Введите название этапа воронки"
-                       aria-label="newStageName">
-            </md-input-container>
-            <div class="add_stage_color"
-                 md-color-picker
-                 type="0"
-                 ng-model="settings_sales_funnel.color"
-                 label="Выберите цвет"
-                 icon="colorize"
-                 default="#f00"
-                 md-color-generic-palette="false"
-                 md-color-history="false">
-            </div> 
+                       aria-label="newStageName"
+                       required>
+        </md-input-container>
+        <div class="add_stage_color"
+              md-color-picker
+              type="0"
+              ng-model="settings_sales_funnel.dialogObject.getStageEntity().color"
+              label="Выберите цвет"
+              icon="colorize"
+              default="#f00"
+              md-color-generic-palette="false"
+              md-color-history="false">
+        </div> 
+        <md-input-container class="md-block dialog_input" flex-gt-sm>
+          <input name="newStageNum"
+                  type="text"
+                  ng-model="settings_sales_funnel.dialogObject.getStageEntity().num"
+                  minlength="number"
+                  placeholder="Введите номер этапа"
+                  aria-label="newStageNum"
+                  required>
+        </md-input-container>
       </div>
     </md-dialog-content>
     <md-dialog-actions layout="row">
       <span flex></span>
-      <md-button ng-click="answer('not useful')">
-       Not Useful
+      <md-button aria-label="doneBtn" ng-click="settings_sales_funnel.dialogDone(settings_sales_funnel.dialogObject.getStageEntity())">
+       {{settings_sales_funnel.dialogParams.getDialogParams().dialogOkBtnText}}
       </md-button>
-      <md-button ng-click="answer('useful')" style="margin-right:20px;">
-        Useful
+      <md-button aria-label="cancelBtn" ng-click="settings_sales_funnel.dialogCancel()" style="margin-right:20px;">
+        Отмена
       </md-button>
     </md-dialog-actions>
   </form>
