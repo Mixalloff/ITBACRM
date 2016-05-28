@@ -1,6 +1,35 @@
+<link rel="stylesheet" href="crmApp/personalPage/settings/fields/settings.fields.css">
 <section class="settings_body_block">
     <h2 class="inner_header">Поля</h2>
     <div class="settings_container">
-        
+        <md-tabs md-dynamic-height
+                 md-border-bottom
+                 md-align-tabs="top"
+                 md-align-tabs="top">
+          <md-tab label="Контакты">
+            <md-tab-body>
+              <div class="fields_container">
+                  <md-button class="md-raised add_group_btn" ng-click="settings_fields.addGroup($event)"> Добавить группу </md-button>
+                   <md-button class="md-raised add_group_btn" ng-click="settings_fields.addField($event)"> Добавить поле </md-button>
+                  <div class="item_group" ng-repeat="group in settings_fields.config.fields.contacts.groups">
+                      <h3>{{group.name}}</h3>
+                      <div class="item_field" ng-repeat="field in group.fields" layout>
+                          <div class="field_name field_option" flex="30">{{field.name}}</div>
+                          <div class="field_valueType field_option" flex="20">{{field.valueType}}</div>
+                          <div class="field_required field_option">{{field.isRequired}}</div>
+                      </div>
+                  </div>
+                  <md-button class="md-fab add_btn center_content" aria-label="Add task">
+                        <md-icon md-font-library="material-icons">add</md-icon>
+                    </md-button>
+              </div>
+            </md-tab-body>
+          </md-tab>
+          <md-tab label="Сделки">
+            <md-tab-body>
+              content
+            </md-tab-body>
+          </md-tab>
+        </md-tabs>
     </div>
 </section>

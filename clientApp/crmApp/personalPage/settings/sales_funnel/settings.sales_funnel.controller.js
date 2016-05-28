@@ -1,5 +1,5 @@
-angular.module('crmApp').controller("settings_sales_funnelCtrl", ["$stateParams", "$mdDialog", "stageDialogParams", "dialogStageEntity",
-     function ($stateParams, $mdDialog, stageDialogParams, dialogStageEntity) {
+angular.module('crmApp').controller("settings_sales_funnelCtrl", ["$stateParams", "$mdDialog", "dialogParams", "dialogStageEntity",
+     function ($stateParams, $mdDialog, dialogParams, dialogStageEntity) {
          var vm = this;
          vm.addStage = addStage;
          vm.config = configFunnel;
@@ -9,7 +9,7 @@ angular.module('crmApp').controller("settings_sales_funnelCtrl", ["$stateParams"
          // Объект этапа воронки
          vm.dialogObject = dialogStageEntity;
          // Параметры диалогового окна
-         vm.dialogParams = stageDialogParams;
+         vm.dialogParams = dialogParams;
          vm.editStage = editStage;
          vm.mdDialog = $mdDialog;
          vm.setColor = setColor;
@@ -25,15 +25,21 @@ function setColor(color){
 // Добавление этапа воронки
 function addStage(ev) {
     this.dialogObject.setStageEntity(configFunnel.sales_funnel.countUserStages + 1);
-    this.dialogParams.setDialogParams(true);
+    this.dialogParams.setDialogParams(
+        {
+            headerText: "Добавить этап",
+            okBtnText: "Добавить",
+            isAdding: true
+        }
+    );
     this.startStageDialog(ev);
 }
 
 // Удаление этапа воронки
 function deleteStage(ev, stage, mas) {
     var confirm = this.mdDialog.confirm()
-          .title('Удалить?')
-          .textContent('Изменение необратимо. Удалить?')
+          .title('Удаление этапа "' + stage.name + '"')
+          .textContent('Изменение необратимо. Вы действительно хотите удалить этап "' + stage.name + '"?')
           .ariaLabel('удалить')
           .targetEvent(ev)
           .ok('Удалить')
@@ -56,7 +62,13 @@ function deleteStage(ev, stage, mas) {
 
 // Исправление существующего этапа воронки
 function editStage(ev, editedStage) {
-    this.dialogParams.setDialogParams(false);
+    this.dialogParams.setDialogParams(
+         {
+            headerText: "Исправление этапа",
+            okBtnText: "Сохранить",
+            isAdding: false
+        }
+    );
     this.dialogObject.setStageEntityObject(editedStage);
     this.editedStage = editedStage;
     this.startStageDialog(ev, this.mdDialog);
@@ -79,11 +91,26 @@ function startStageDialog(ev) {
             controller.config.sales_funnel.countUserStages++;
         }
         else {
-            alert('edit');
+            delFromStageArray(newStage, controller.config.sales_funnel.stages);
+            insertToStageArray(newStage, controller.config.sales_funnel.stages);
+           // alert('edit');
         }
     }, function() {
         // закрыто диалоговое окно
     });
+}
+
+function delFromStageArray(elem, mas) {
+    for (var i = 0; i < mas.length; i++) {
+        if (mas[i].id == elem.id) {
+            // Удаление
+            mas.splice(i, 1);
+            for(var j = i; j < mas.length; j++) {
+                mas[j].num--;
+            }
+            return;
+        }
+    }
 }
 
 // Вставка в массив этапов воронки (учитывает последовательность по параметру num)

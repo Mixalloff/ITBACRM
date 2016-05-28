@@ -1,0 +1,15 @@
+.field_option {
+    padding: 10px;
+}
+
+/*.fields_container {
+    position: relative;
+}*/
+
+.add_btn {
+    right: 0;
+    top: 0;
+    position: fixed;
+    background-color: rgb(6, 116, 30)!important;
+    line-height: 100%!important;
+}
