@@ -15,7 +15,7 @@
         <md-input-container class="md-block dialog_input" flex-gt-sm>
                 <input name="newStageName"
                        type="text"
-                       ng-model="settings_sales_funnel.dialogObject.getStageEntity().name"
+                       ng-model="settings_sales_funnel.dialogObject.getEntity().name"
                        minlength="number"
                        placeholder="Введите название этапа воронки"
                        aria-label="newStageName"
@@ -24,7 +24,7 @@
         <div class="add_stage_color"
               md-color-picker
               type="0"
-              ng-model="settings_sales_funnel.dialogObject.getStageEntity().color"
+              ng-model="settings_sales_funnel.dialogObject.getEntity().color"
               label="Выберите цвет"
               icon="colorize"
               default="#f00"
@@ -34,7 +34,7 @@
         <md-input-container class="md-block dialog_input" flex-gt-sm>
           <input name="newStageNum"
                   type="text"
-                  ng-model="settings_sales_funnel.dialogObject.getStageEntity().num"
+                  ng-model="settings_sales_funnel.dialogObject.getEntity().num"
                   minlength="number"
                   placeholder="Введите номер этапа"
                   aria-label="newStageNum"
@@ -44,7 +44,7 @@
     </md-dialog-content>
     <md-dialog-actions layout="row">
       <span flex></span>
-      <md-button aria-label="doneBtn" ng-click="settings_sales_funnel.dialogDone(settings_sales_funnel.dialogObject.getStageEntity())">
+      <md-button aria-label="doneBtn" ng-click="settings_sales_funnel.dialogDone(settings_sales_funnel.dialogObject.getEntity())">
        {{settings_sales_funnel.dialogParams.getDialogParams().okBtnText}}
       </md-button>
       <md-button aria-label="cancelBtn" ng-click="settings_sales_funnel.dialogCancel()" style="margin-right:20px;">

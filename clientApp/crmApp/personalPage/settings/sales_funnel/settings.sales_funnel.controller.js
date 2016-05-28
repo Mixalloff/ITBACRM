@@ -1,5 +1,5 @@
-angular.module('crmApp').controller("settings_sales_funnelCtrl", ["$stateParams", "$mdDialog", "dialogParams", "dialogStageEntity",
-     function ($stateParams, $mdDialog, dialogParams, dialogStageEntity) {
+angular.module('crmApp').controller("settings_sales_funnelCtrl", ["$stateParams", "$mdDialog", "dialogParams", "dialogTransferEntity",
+     function ($stateParams, $mdDialog, dialogParams, dialogTransferEntity) {
          var vm = this;
          vm.addStage = addStage;
          vm.config = configFunnel;
@@ -7,7 +7,7 @@ angular.module('crmApp').controller("settings_sales_funnelCtrl", ["$stateParams"
          vm.dialogCancel = dialogCancel;
          vm.dialogDone = dialogDone;
          // Объект этапа воронки
-         vm.dialogObject = dialogStageEntity;
+         vm.dialogObject = dialogTransferEntity;
          // Параметры диалогового окна
          vm.dialogParams = dialogParams;
          vm.editStage = editStage;
@@ -24,7 +24,14 @@ function setColor(color){
 
 // Добавление этапа воронки
 function addStage(ev) {
-    this.dialogObject.setStageEntity(configFunnel.sales_funnel.countUserStages + 1);
+    this.dialogObject.setEntity(
+         {
+             id: Math.round(Math.random()*1000),
+             num: configFunnel.sales_funnel.countUserStages + 1,
+             name: "",
+             color: "#FFF"
+         }
+    );
     this.dialogParams.setDialogParams(
         {
             headerText: "Добавить этап",
@@ -69,7 +76,7 @@ function editStage(ev, editedStage) {
             isAdding: false
         }
     );
-    this.dialogObject.setStageEntityObject(editedStage);
+    this.dialogObject.cloneEntity(editedStage);
     this.editedStage = editedStage;
     this.startStageDialog(ev, this.mdDialog);
 }

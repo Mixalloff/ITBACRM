@@ -1,3 +1,4 @@
+// Сервис для передачи произвольных параметров в UI элементы
 angular.module('crmApp').factory("dialogParams", function() {
     var dialogParams = {};
     var getDialogParams = function() {
