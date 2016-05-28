@@ -1,5 +1,5 @@
-angular.module('crmApp').controller("settings_sales_funnelCtrl", ["$stateParams", "$mdDialog", "dialogParams", "dialogTransferEntity",
-     function ($stateParams, $mdDialog, dialogParams, dialogTransferEntity) {
+angular.module('crmApp').controller("settings_sales_funnelCtrl", ["$stateParams", "$mdDialog", "transferParams", "transferEntity",
+     function ($stateParams, $mdDialog, transferParams, transferEntity) {
          var vm = this;
          vm.addStage = addStage;
          vm.config = configFunnel;
@@ -7,9 +7,9 @@ angular.module('crmApp').controller("settings_sales_funnelCtrl", ["$stateParams"
          vm.dialogCancel = dialogCancel;
          vm.dialogDone = dialogDone;
          // Объект этапа воронки
-         vm.dialogObject = dialogTransferEntity;
+         vm.dialogObject = transferEntity;
          // Параметры диалогового окна
-         vm.dialogParams = dialogParams;
+         vm.dialogParams = transferParams;
          vm.editStage = editStage;
          vm.mdDialog = $mdDialog;
          vm.setColor = setColor;
@@ -32,7 +32,7 @@ function addStage(ev) {
              color: "#FFF"
          }
     );
-    this.dialogParams.setDialogParams(
+    this.dialogParams.setParams(
         {
             headerText: "Добавить этап",
             okBtnText: "Добавить",
@@ -69,7 +69,7 @@ function deleteStage(ev, stage, mas) {
 
 // Исправление существующего этапа воронки
 function editStage(ev, editedStage) {
-    this.dialogParams.setDialogParams(
+    this.dialogParams.setParams(
          {
             headerText: "Исправление этапа",
             okBtnText: "Сохранить",
@@ -93,7 +93,7 @@ function startStageDialog(ev) {
         clickOutsideToClose: false,
     })
     .then(function(newStage) {
-        if (controller.dialogParams.getDialogParams().isAddedState) {
+        if (controller.dialogParams.getParams().isAddedState) {
             insertToStageArray(newStage, controller.config.sales_funnel.stages);
             controller.config.sales_funnel.countUserStages++;
         }

@@ -1,5 +1,5 @@
 // Сервис для передачи объекта (в диалоговые окна и т.п.)
-angular.module('crmApp').factory("dialogTransferEntity", function() {
+angular.module('crmApp').factory("transferEntity", function() {
     var entity = {};
     // Получить объект
     var getEntity = function() {
