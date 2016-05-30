@@ -27,6 +27,16 @@
     <md-dialog-content  ng-if="!settings_fields.dialogParams.getParams().isGroup">
         <div class="md-dialog-content">
           <h3 class="inner_header">Установите параметры поля</h3>
+        <md-select class="dialog_input"
+                   aria-label="GroupField"
+                   ng-model="settings_fields.dialogObject.getEntity().group"
+                   placeholder="Выберите группу"
+                   required> 
+            <md-option ng-value="item" 
+                       ng-repeat="group in settings_fields.config.fields.contacts.groups">
+                {{group.name}} 
+            </md-option>
+        </md-select>
         <md-input-container class="md-block dialog_input" flex-gt-sm>
                 <input name="newFieldName"
                        type="text"
