@@ -53,14 +53,14 @@ function deleteStage(ev, stage, mas) {
           .cancel('Отмена');
     this.mdDialog.show(confirm).then(function() {
         for (var i = 0; i < mas.length; i++) {
-        if (stage.num == mas[i].num) {
-            for (var j = i; j < mas.length; j++) {
-                mas[j].num--;
+            if (stage.num == mas[i].num) {
+                for (var j = i; j < mas.length; j++) {
+                    mas[j].num--;
+                }
+                mas.splice(i, 1);
+                return;
             }
-            mas.splice(i, 1);
-            return;
         }
-    }
     }, function() {
       // Отмена
     });

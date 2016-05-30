@@ -1,16 +1,39 @@
-angular.module('crmApp').controller("settings_fieldsCtrl", ["$stateParams", "$mdDialog",
-     function ($stateParams, $mdDialog) {
+angular.module('crmApp').controller("settings_fieldsCtrl", ["$stateParams", "$mdDialog", "transferParams", "transferEntity", 
+     function ($stateParams, $mdDialog, transferParams, transferEntity) {
          var vm = this;
          
          vm.config = configFields;
          vm.addGroup = addGroup;
          vm.addField = addField;
          vm.mdDialog = $mdDialog;
+         vm.dialogParams = transferParams;
+         vm.startDialog = startDialog;
+         vm.dialogObject = transferEntity;
      }
 ]);
 
+function addField(ev) {
+    this.dialogParams.setParams(
+        {
+            headerText: "Добавить поле",
+            okBtnText: "Добавить",
+            isAdding: true,
+            isGroup: false
+        }
+    );
+    this.startDialog(ev);
+}
+
 function addGroup(ev) {
-    
+    this.dialogParams.setParams(
+        {
+            headerText: "Добавить группу",
+            okBtnText: "Добавить",
+            isAdding: true,
+            isGroup: true
+        }
+    );
+    this.startDialog(ev);
 }
 
 function startDialog(ev) {
@@ -18,7 +41,7 @@ function startDialog(ev) {
     controller.mdDialog.show({
         controller: 'settings_fieldsCtrl',
         controllerAs: 'settings_fields',
-        templateUrl: 'crmApp/personalPage/settings/settings_fields/content/settings_fields.dialog.html',
+        templateUrl: 'crmApp/personalPage/settings/fields/content/settings_fields.dialog.html',
         parent: angular.element(document.body),
         targetEvent: ev,
         clickOutsideToClose: false,
