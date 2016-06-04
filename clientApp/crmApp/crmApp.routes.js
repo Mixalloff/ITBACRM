@@ -80,7 +80,6 @@ angular.module('crmApp').config(function ($stateProvider, $urlRouterProvider, $l
                     controller: 'settings_sales_funnelCtrl',
                     controllerAs: 'settings_sales_funnel'
                 })
-                
                 .state('personal.settings.users', {
                     url: '/users',
                     templateUrl: 'crmApp/personalPage/settings/users/settings.users.html',
@@ -89,9 +88,19 @@ angular.module('crmApp').config(function ($stateProvider, $urlRouterProvider, $l
                 })
                 .state('personal.settings.fields', {
                     url: '/fields',
-                    templateUrl: 'crmApp/personalPage/settings/fields/settings.fields.html',
-                    controller: 'settings_fieldsCtrl',
-                    controllerAs: 'settings_fields'
+                    views: {
+                        "": {
+                            templateUrl: 'crmApp/personalPage/settings/fields/settings.fields.html',
+                            controller: 'settings_fieldsCtrl',
+                            controllerAs: 'settings_fields',
+                        },
+                        "contacts@personal.settings.fields": {
+                            templateUrl: 'crmApp/personalPage/settings/fields/content/settings.fields.contacts.html',
+                        },
+                        "deals@personal.settings.fields": {
+                            templateUrl: 'crmApp/personalPage/settings/fields/content/settings.fields.deals.html',
+                        },
+                    }
                 })
                 .state('personal.settings.security', {
                     url: '/security',

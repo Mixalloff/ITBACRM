@@ -7,84 +7,19 @@
                  md-border-bottom
                  md-align-tabs="top"
                  md-align-tabs="top">
+                 
           <md-tab label="Контакты">
             <md-tab-body>
-              <div class="fields_container">
-                  <md-button class="md-raised add_group_btn" ng-click="settings_fields.addGroup($event, 'contacts')"> Добавить группу </md-button>
-                   <md-button class="md-raised add_group_btn" ng-click="settings_fields.addField($event, 'contacts')"> Добавить поле </md-button>
-                  <div class="item_group" ng-repeat="group in settings_fields.config.fields.contacts.groups">
-                      <h3>
-                          {{group.name}}
-                          <div class="group_actions">
-                            <md-button class="md-icon-button launch edit_btn" ng-click="settings_fields.editGroup($event, group)">
-                                <md-icon md-font-library="material-icons ">mode_edit</md-icon>
-                            </md-button>
-                            <md-button class="md-icon-button launch del_btn" ng-click="settings_fields.deleteItem($event, settings_fields.config.fields.contacts.groups, group, true)">
-                                <md-icon md-font-library="material-icons">delete_forever</md-icon>
-                            </md-button>
-                          </div>
-                      </h3>
-                      <div class="item_field" layout>
-                          <div class="field_name field_header field_option" flex="30">Название</div>
-                          <div class="field_valueType field_header field_option" flex="20">Тип значения</div>
-                          <div class="field_required field_header field_option" flex="20">Обязательное поле</div>
-                      </div>
-                      <div class="item_field" ng-repeat="field in group.fields track by $index" layout>
-                          <div class="field_name field_option" flex="30">{{field.name}}</div>
-                          <div class="field_valueType field_option" flex="20">{{field.valueType.name}}</div>
-                          <div class="field_required field_option" flex="20">{{field.isRequired}}</div>
-                          <div class="field_option">
-                              <md-button class="md-icon-button launch edit_btn" ng-click="settings_fields.editField($event, field)">
-                                  <md-icon md-font-library="material-icons ">mode_edit</md-icon>
-                              </md-button>
-                              <md-button class="md-icon-button launch del_btn" ng-click="settings_fields.deleteItem($event, group.fields, field, false)">
-                                  <md-icon md-font-library="material-icons">delete_forever</md-icon>
-                              </md-button>
-                          </div>
-                      </div>
-                  </div>
-              </div>
+                <div ui-view='contacts'/></div>
             </md-tab-body>
           </md-tab>
+          
           <md-tab label="Сделки">
             <md-tab-body>
-              <div class="fields_container">
-                  <md-button class="md-raised add_group_btn" ng-click="settings_fields.addGroup($event, 'deals')"> Добавить группу </md-button>
-                  <md-button class="md-raised add_group_btn" ng-click="settings_fields.addField($event, 'deals')"> Добавить поле </md-button>
-                  <div class="item_group" ng-repeat="group in settings_fields.config.fields.deals.groups">
-                      <h3>
-                          {{group.name}}
-                          <div class="group_actions">
-                            <md-button class="md-icon-button launch edit_btn" ng-click="settings_fields.editGroup($event, group)">
-                                <md-icon md-font-library="material-icons ">mode_edit</md-icon>
-                            </md-button>
-                            <md-button class="md-icon-button launch del_btn" ng-click="settings_fields.deleteItem($event, settings_fields.config.fields.deals.groups, group, true)">
-                                <md-icon md-font-library="material-icons">delete_forever</md-icon>
-                            </md-button>
-                          </div>
-                      </h3>
-                      <div class="item_field" layout>
-                          <div class="field_name field_header field_option" flex="30">Название</div>
-                          <div class="field_valueType field_header field_option" flex="20">Тип значения</div>
-                          <div class="field_required field_header field_option" flex="20">Обязательное поле</div>
-                      </div>
-                      <div class="item_field" ng-repeat="field in group.fields track by $index" layout>
-                          <div class="field_name field_option" flex="30">{{field.name}}</div>
-                          <div class="field_valueType field_option" flex="20">{{field.valueType.name}}</div>
-                          <div class="field_required field_option" flex="20">{{field.isRequired}}</div>
-                          <div class="field_option">
-                              <md-button class="md-icon-button launch edit_btn" ng-click="settings_fields.editField($event, field)">
-                                  <md-icon md-font-library="material-icons ">mode_edit</md-icon>
-                              </md-button>
-                              <md-button class="md-icon-button launch del_btn" ng-click="settings_fields.deleteItem($event, group.fields, field, false)">
-                                  <md-icon md-font-library="material-icons">delete_forever</md-icon>
-                              </md-button>
-                          </div>
-                      </div>
-                  </div>
-              </div>
+              <div ui-view='deals'/></div>
             </md-tab-body>
           </md-tab>
+          
         </md-tabs>
     </div>
 </section>
