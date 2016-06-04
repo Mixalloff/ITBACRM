@@ -27,3 +27,9 @@ md-tabs.md-default-theme md-ink-bar, md-tabs md-ink-bar {
     color: #fff !important;
     background-color: #314479 !important;
 }
+
+.field_header {
+    font-weight: 600;
+    text-decoration: underline;
+    color: #4A4A4A;
+}

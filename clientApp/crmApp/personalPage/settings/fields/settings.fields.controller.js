@@ -7,36 +7,43 @@ angular.module('crmApp').controller("settings_fieldsCtrl", ["$stateParams", "$md
          vm.addField = addField;
          vm.mdDialog = $mdDialog;
          vm.dialogParams = transferParams;
-         vm.startDialog = startDialog;
+         vm.startDialog = startFieldsDialog;
          vm.dialogObject = transferEntity;
      }
 ]);
 
-function addField(ev) {
+// Добавить поле
+function addField(ev, itemType) {
     this.dialogParams.setParams(
         {
             headerText: "Добавить поле",
             okBtnText: "Добавить",
             isAdding: true,
-            isGroup: false
+            isGroup: false,
+            type: itemType
         }
     );
+    this.dialogObject.setEntity({});
     this.startDialog(ev);
 }
 
-function addGroup(ev) {
+// Добавить группу
+function addGroup(ev, itemType) {
     this.dialogParams.setParams(
         {
             headerText: "Добавить группу",
             okBtnText: "Добавить",
             isAdding: true,
-            isGroup: true
+            isGroup: true,
+            type: itemType
         }
     );
+    this.dialogObject.setEntity({});
     this.startDialog(ev);
 }
 
-function startDialog(ev) {
+// Открытие диалогового окна
+function startFieldsDialog(ev) {
     var controller = this;
     controller.mdDialog.show({
         controller: 'settings_fieldsCtrl',
@@ -46,29 +53,62 @@ function startDialog(ev) {
         targetEvent: ev,
         clickOutsideToClose: false,
     })
-    .then(function(newStage) {
-        if (controller.dialogParams.getDialogParams().isAddedState) {
-            insertToStageArray(newStage, controller.config.sales_funnel.stages);
-            controller.config.sales_funnel.countUserStages++;
+    .then(function(newEntity) {
+        if (controller.dialogParams.getParams().isAdding) {
+            insertToEntitiesArray(controller, newEntity);
         }
         else {
-            alert('edit');
+            editStageArray();
         }
     }, function() {
         // закрыто диалоговое окно
     });
 }
 
+// Добавление в массив сущностей
+function insertToEntitiesArray(controller, addingEntity) {
+    var itemType = controller.dialogParams.getParams().type;
+    if (controller.dialogParams.getParams().isGroup) {
+        controller.config.fields[itemType].groups.push(
+            {
+                name: addingEntity.name,
+                type: itemType,
+                entity: "group",
+                fields: []
+            }
+        );
+    }
+    else {
+        addingEntity.group.fields.push(
+            {
+                name: addingEntity.name,
+                type: itemType,
+                entity: "item",
+                valueType: addingEntity.valueType.name,
+                isRequired: addingEntity.isRequired
+            }
+        );
+    }
+}
+
+function editStageArray() {
+    
+}
+
+// Объект конфигурации полей
 var configFields = {
     valueTypes: [
         {
-            name: "String"
+            name: "Строка",
+            programType: "String"
         },
         {
-            name: "Number"
+            name: "Число",
+            programType: "Number"
         },
         {
-            name: "Date"
+            name: "Дата",
+            programType: "Date"
         }
     ],
     fields: {
@@ -79,19 +119,27 @@ var configFields = {
                 // Основные
                 {
                     name: "Основные",
+                    type: "contacts",
+                    entity: "group",
                     fields: [
                         {
                             name: "ФИО",
+                            type: "contacts",
+                            entity: "item",
                             valueType: "String",
                             isRequired: true
                         },
                         {
                             name: "Компания",
+                            type: "contacts",
+                            entity: "item",
                             valueType: "String",
                             isRequired: false
                         },
                         {
                             name: "Должность",
+                            type: "contacts",
+                            entity: "item",
                             valueType: "String",
                             isRequired: false
                         },
@@ -100,19 +148,27 @@ var configFields = {
                 // Для контакта (почта, телефон, ...)
                 {
                     name: "Контактные данные",
+                    type: "contacts",
+                    entity: "group",
                     fields: [
                         {
                             name: "Email",
+                            type: "contacts",
+                            entity: "item",
                             valueType: "String",
                             isRequired: false
                         },
                         {
                             name: "Телефон",
+                            type: "contacts",
+                            entity: "item",
                             valueType: "String",
                             isRequired: false
                         },
                         {
                             name: "Адрес",
+                            type: "contacts",
+                            entity: "item",
                             valueType: "String",
                             isRequired: false
                         },

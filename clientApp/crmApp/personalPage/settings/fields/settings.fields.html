@@ -10,10 +10,15 @@
           <md-tab label="Контакты">
             <md-tab-body>
               <div class="fields_container">
-                  <md-button class="md-raised add_group_btn" ng-click="settings_fields.addGroup($event)"> Добавить группу </md-button>
-                   <md-button class="md-raised add_group_btn" ng-click="settings_fields.addField($event)"> Добавить поле </md-button>
+                  <md-button class="md-raised add_group_btn" ng-click="settings_fields.addGroup($event, 'contacts')"> Добавить группу </md-button>
+                   <md-button class="md-raised add_group_btn" ng-click="settings_fields.addField($event, 'contacts')"> Добавить поле </md-button>
                   <div class="item_group" ng-repeat="group in settings_fields.config.fields.contacts.groups">
                       <h3>{{group.name}}</h3>
+                      <div class="item_field" layout>
+                          <div class="field_name field_header field_option" flex="30">Название</div>
+                          <div class="field_valueType field_header field_option" flex="20">Тип значения</div>
+                          <div class="field_required field_header field_option">Обязательное поле</div>
+                      </div>
                       <div class="item_field" ng-repeat="field in group.fields" layout>
                           <div class="field_name field_option" flex="30">{{field.name}}</div>
                           <div class="field_valueType field_option" flex="20">{{field.valueType}}</div>

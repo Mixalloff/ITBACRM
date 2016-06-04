@@ -9,6 +9,8 @@
 
 .settings_body_block {
     padding: 30px;
+    height: 75vh;
+    overflow-y: scroll;
 }
 
 .setting_menu_block {
