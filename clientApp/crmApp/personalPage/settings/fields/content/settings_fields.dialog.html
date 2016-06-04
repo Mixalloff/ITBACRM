@@ -33,7 +33,7 @@
                     placeholder="Выберите группу"
                     required> 
               <md-option ng-value="group" 
-                        ng-repeat="group in settings_fields.config.fields.contacts.groups"
+                        ng-repeat="group in settings_fields.config.fields[settings_fields.dialogParams.getParams().type].groups"
                         ng-select="settings_fields.dialogObject.getEntity().group">
                   {{group.name}} 
               </md-option>

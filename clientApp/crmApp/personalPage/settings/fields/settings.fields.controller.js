@@ -316,8 +316,95 @@ var configFields = {
                         },
                     ]
                 },
-            ]
-           
+            ]  
+        },
+        deals: {
+            // Группы полей
+            groups: [
+                // Основные
+                {
+                    name: "Основные",
+                    id: 3,
+                    type: "deals",
+                    entity: "group",
+                    fields: [
+                        {
+                            id: 11,
+                            name: "Наименование",
+                            groupId: 3,
+                            type: "deals",
+                            entity: "item",
+                            valueType: {
+                                id: 1,
+                                name: "Строка",
+                                programType: "String"
+                            },
+                            isRequired: true
+                        },
+                        {
+                            id: 12,
+                            name: "Описание",
+                            groupId: 3,
+                            type: "deals",
+                            entity: "item",
+                            valueType: {
+                                id: 1,
+                                name: "Строка",
+                                programType: "String"
+                            },
+                            isRequired: false
+                        },
+                        {
+                            id: 13,
+                            name: "Сумма",
+                            groupId: 3,
+                            type: "deals",
+                            entity: "item",
+                            valueType: {
+                                id: 1,
+                                name: "Число",
+                                programType: "Number"
+                            },
+                            isRequired: false
+                        },
+                    ]
+                },
+                // Для контакта (почта, телефон, ...)
+                {
+                    name: "Контактная информация",
+                    id: 4,
+                    type: "deals",
+                    entity: "group",
+                    fields: [
+                        {
+                            id: 14,
+                            name: "Компания",
+                            groupId: 4,
+                            type: "deals",
+                            entity: "item",
+                            valueType: {
+                                id: 1,
+                                name: "Строка",
+                                programType: "String"
+                            },
+                            isRequired: false
+                        },
+                        {
+                            id: 15,
+                            name: "Контактное лицо",
+                            groupId: 4,
+                            type: "deals",
+                            entity: "item",
+                            valueType: {
+                                id: 1,
+                                name: "Строка",
+                                programType: "String"
+                            },
+                            isRequired: false
+                        }
+                    ]
+                },
+            ]  
         }
     }
 }
