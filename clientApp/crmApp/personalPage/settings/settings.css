@@ -41,3 +41,11 @@
     font-style: italic;
     padding-left: 20px;
 }
+
+.edit_btn:hover md-icon{
+    color: green;
+}
+
+.del_btn:hover md-icon{
+    color: red;
+}

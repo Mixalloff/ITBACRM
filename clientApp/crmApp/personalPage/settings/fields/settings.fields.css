@@ -1,17 +1,6 @@
 .field_option {
     padding: 10px;
-}
-
-/*.fields_container {
-    position: relative;
-}*/
-
-.add_btn {
-    right: 0;
-    top: 0;
-    position: fixed;
-    background-color: rgb(6, 116, 30)!important;
-    line-height: 100%!important;
+    text-align: center;
 }
 
 .dialog_input label {
@@ -32,4 +21,18 @@ md-tabs.md-default-theme md-ink-bar, md-tabs md-ink-bar {
     font-weight: 600;
     text-decoration: underline;
     color: #4A4A4A;
+}
+
+.item_field {
+    align-items: center;
+}
+
+.group_actions {
+    display: inline;
+    margin-left: 20px;
+}
+
+.group_actions button{
+    padding: 0!important;
+    margin: 0!important;
 }

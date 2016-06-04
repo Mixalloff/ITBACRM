@@ -3,14 +3,46 @@ angular.module('crmApp').controller("settings_fieldsCtrl", ["$stateParams", "$md
          var vm = this;
          
          vm.config = configFields;
-         vm.addGroup = addGroup;
-         vm.addField = addField;
+         
          vm.mdDialog = $mdDialog;
          vm.dialogParams = transferParams;
          vm.startDialog = startFieldsDialog;
          vm.dialogObject = transferEntity;
+         
+         vm.addField = addField;
+         vm.editField = editField;
+         
+         vm.addGroup = addGroup;
+         vm.editGroup = editGroup;
+         
+         vm.getTypeById = getTypeById;
+         vm.getGroupById = getGroupById;
+         
+         vm.insertToEntitiesArray = insertToEntitiesArray;
+         vm.editEntitiesArray = editEntitiesArray;
+         vm.deleteItem = deleteItem;
      }
 ]);
+
+// Получение типа данных по id
+function getTypeById(typeId) {
+    var types = this.config.valueTypes;
+    for (var i = 0; i < types.length; i++) {
+        if (types[i].id = typeId) {
+            return types[i];
+        }
+    }
+}
+
+// Получить группу по id
+function getGroupById (groupId, type) {
+    var groups = this.config.fields[type].groups;
+    for (var i = 0; i < groups.length; i++) {
+        if (groups[i].id == groupId) {
+            return groups[i];
+        }
+    }
+}
 
 // Добавить поле
 function addField(ev, itemType) {
@@ -24,6 +56,38 @@ function addField(ev, itemType) {
         }
     );
     this.dialogObject.setEntity({});
+    this.startDialog(ev);
+}
+
+// Исправить поле
+function editField(ev, item) {
+    this.dialogParams.setParams(
+        {
+            headerText: "Исправление поля",
+            okBtnText: "Сохранить",
+            isAdding: false,
+            isGroup: false,
+            type: item.type
+        }
+    );
+    item.valueType = this.getTypeById(item.valueType.id);
+    item.group = this.getGroupById(item.groupId, item.type);
+    this.dialogObject.cloneEntity(item);
+    this.startDialog(ev);
+}
+
+// Исправить группу
+function editGroup(ev, item) {
+    this.dialogParams.setParams(
+        {
+            headerText: "Исправление группы",
+            okBtnText: "Сохранить",
+            isAdding: false,
+            isGroup: true,
+            type: item.type
+        }
+    );
+    this.dialogObject.cloneEntity(item);
     this.startDialog(ev);
 }
 
@@ -42,6 +106,28 @@ function addGroup(ev, itemType) {
     this.startDialog(ev);
 }
 
+// Удаление сущности из массива
+function deleteItem(ev, mas, item, isGroup) {
+    var itemType = isGroup ? "группу " : "поле ";
+    var confirm = this.mdDialog.confirm()
+          .title('Удалить ' + itemType + '"' + item.name)
+          .textContent('Изменение необратимо. Вы действительно хотите удалить ' + itemType + '"' + item.name + '?')
+          .ariaLabel('удалить')
+          .targetEvent(ev)
+          .ok('Удалить')
+          .cancel('Отмена');
+    this.mdDialog.show(confirm).then(function() {
+        for (var i = 0; i < mas.length; i++) {
+            if (item.id == mas[i].id) {
+                mas.splice(i, 1);
+                return;
+            }
+        }
+    }, function() {
+      // Отмена
+    });
+}
+
 // Открытие диалогового окна
 function startFieldsDialog(ev) {
     var controller = this;
@@ -55,10 +141,10 @@ function startFieldsDialog(ev) {
     })
     .then(function(newEntity) {
         if (controller.dialogParams.getParams().isAdding) {
-            insertToEntitiesArray(controller, newEntity);
+            controller.insertToEntitiesArray(newEntity);
         }
         else {
-            editStageArray();
+            controller.editEntitiesArray(newEntity);
         }
     }, function() {
         // закрыто диалоговое окно
@@ -66,12 +152,13 @@ function startFieldsDialog(ev) {
 }
 
 // Добавление в массив сущностей
-function insertToEntitiesArray(controller, addingEntity) {
-    var itemType = controller.dialogParams.getParams().type;
-    if (controller.dialogParams.getParams().isGroup) {
-        controller.config.fields[itemType].groups.push(
+function insertToEntitiesArray(addingEntity) {
+    var itemType = this.dialogParams.getParams().type;
+    if (this.dialogParams.getParams().isGroup) {
+        this.config.fields[itemType].groups.push(
             {
                 name: addingEntity.name,
+                id: Math.round(Math.random()*1000),
                 type: itemType,
                 entity: "group",
                 fields: []
@@ -81,32 +168,49 @@ function insertToEntitiesArray(controller, addingEntity) {
     else {
         addingEntity.group.fields.push(
             {
+                id: Math.round(Math.random()*1000),
                 name: addingEntity.name,
+                groupId: addingEntity.group.id,
                 type: itemType,
                 entity: "item",
-                valueType: addingEntity.valueType.name,
+                valueType: addingEntity.valueType,
                 isRequired: addingEntity.isRequired
             }
         );
     }
 }
 
-function editStageArray() {
-    
+// Изменение сущности в массиве
+function editEntitiesArray(editingEntity) {
+    var itemType = this.dialogParams.getParams().type;
+    if (this.dialogParams.getParams().isGroup) {
+        this.getGroupById(editingEntity.id, itemType).name = editingEntity.name;
+    }
+    else {
+        var group = this.getGroupById(editingEntity.groupId, itemType);
+        for (var i = 0; i < group.fields.length; i++) {
+            if (group.fields[i].id == editingEntity.id) {
+                group.fields[i] = editingEntity;
+            }
+        }
+    }
 }
 
 // Объект конфигурации полей
 var configFields = {
     valueTypes: [
         {
+            id: 1,
             name: "Строка",
             programType: "String"
         },
         {
+            id: 2,
             name: "Число",
             programType: "Number"
         },
         {
+            id: 3,
             name: "Дата",
             programType: "Date"
         }
@@ -119,28 +223,47 @@ var configFields = {
                 // Основные
                 {
                     name: "Основные",
+                    id: 1,
                     type: "contacts",
                     entity: "group",
                     fields: [
                         {
+                            id: 1,
                             name: "ФИО",
+                            groupId: 1,
                             type: "contacts",
                             entity: "item",
-                            valueType: "String",
+                            valueType: {
+                                id: 1,
+                                name: "Строка",
+                                programType: "String"
+                            },
                             isRequired: true
                         },
                         {
+                            id: 2,
                             name: "Компания",
+                            groupId: 1,
                             type: "contacts",
                             entity: "item",
-                            valueType: "String",
+                            valueType: {
+                                id: 1,
+                                name: "Строка",
+                                programType: "String"
+                            },
                             isRequired: false
                         },
                         {
+                            id: 3,
                             name: "Должность",
+                            groupId: 1,
                             type: "contacts",
                             entity: "item",
-                            valueType: "String",
+                            valueType: {
+                                id: 1,
+                                name: "Строка",
+                                programType: "String"
+                            },
                             isRequired: false
                         },
                     ]
@@ -148,28 +271,47 @@ var configFields = {
                 // Для контакта (почта, телефон, ...)
                 {
                     name: "Контактные данные",
+                    id: 2,
                     type: "contacts",
                     entity: "group",
                     fields: [
                         {
+                            id: 4,
                             name: "Email",
+                            groupId: 2,
                             type: "contacts",
                             entity: "item",
-                            valueType: "String",
+                            valueType: {
+                                id: 1,
+                                name: "Строка",
+                                programType: "String"
+                            },
                             isRequired: false
                         },
                         {
+                            id: 5,
                             name: "Телефон",
+                            groupId: 2,
                             type: "contacts",
                             entity: "item",
-                            valueType: "String",
+                            valueType: {
+                                id: 1,
+                                name: "Строка",
+                                programType: "String"
+                            },
                             isRequired: false
                         },
                         {
+                            id: 6,
                             name: "Адрес",
+                            groupId: 2,
                             type: "contacts",
                             entity: "item",
-                            valueType: "String",
+                            valueType: {
+                                id: 1,
+                                name: "Строка",
+                                programType: "String"
+                            },
                             isRequired: false
                         },
                     ]
